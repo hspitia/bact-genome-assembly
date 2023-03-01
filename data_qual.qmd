@@ -1,0 +1,7 @@
+<!-- \mainmatter -->
+
+# Preparación del entorno de trabajo
+
+## Estructura de directorios
+
+## Ambiente conda e instalación de programas

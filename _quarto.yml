@@ -1,0 +1,128 @@
+project:
+  type: book
+
+book:
+  title: "Ensamblaje y Anotación de Genomas Bacterianos"
+  author: "Héctor Fabio Espitia-Navarro"
+  date: today
+  date-format: long
+  chapters:
+    - index.qmd
+    - setup.qmd
+    # - data.qmd
+    # - data_qual.qmd
+    # - assembly.qmd
+    # - assembly_qual.qmd
+    # - annotation.qmd
+    # - author.qmd
+    # - references.qmd
+  appendices:
+    - a-appendix.qmd
+ 
+bibliography: 
+  - references.bib
+
+crossref:
+  fig-title: Figura     # (default is "Figure")
+  tbl-title: Tabla     # (default is "Table")
+  title-delim: "."      # (default is ":")
+  
+execute:
+  echo: true
+  eval: true
+  ouput: true
+
+editor: visual
+
+engine: knitr
+
+knitr:
+  opts_chunk: 
+    engine.opts: '-l' # For Bash to include env variables
+    # prompt: true
+    # collapse: true
+    # R.options:
+    #   knitr.graphics.auto_pdf: true
+
+environments: [wrapfigure] # From extension latex-environment
+
+filters:
+  - latex-environment
+  
+lang: es
+
+language: 
+  callout-tip-caption: "Consejo"
+
+format:
+  html:
+    # FONTS CONFIG
+    # mainfont: "Diverda Sans Com"
+    # mainfont: "IowanOldSt BT"
+    # mainfont: "mathpazo"
+    # mainfont: "Montserrat"
+    # mainfont: "Palatino LT Std"
+    # mainfont: "Palatino"
+    mainfont: "Source Sans Pro"
+    # monofont: "Bitstream Vera Sans Mono"
+    monofont: "Fira Code"
+    # monofont: "FiraMono"
+    # monofont: "Inconsolata"
+    # monofont: "Monaco"
+    code-block-bg: "#e9ecef"
+    colorlinks: true
+    fig-align: center
+    fontsize: 10pt
+    theme: 
+      - cosmo
+      - assets/css/custom.scss
+    
+  pdf:
+    lang: es-ES
+    pdf-engine: xelatex
+    number-sections: true
+    # For kranktz class
+    # documentclass: latex/krantz
+    # include-in-header: latex/preamble.tex
+    # include-before-body: latex/before_body.tex
+    # include-after-body: latex/after_body.tex
+    # ## For koma-script class
+    # documentclass: scrbook
+    documentclass: scrreport
+    include-in-header:
+      text: |
+          \usepackage{wrapfig}
+          \let\temptt\texttt
+          %\renewcommand{\texttt}[1]{\textcolor[rgb]{0.59,0.33,0.72}{\temptt{#1}}}
+          \renewcommand{\texttt}[1]{\textcolor[rgb]{0.28,0.35,0.67}{\temptt{#1}}}
+          \usepackage{fvextra}
+          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+          \DefineVerbatimEnvironment{verbatim}{Verbatim}{breaklines,breaknonspaceingroup,breakanywhere,commandchars=\\\{\}}
+          % \fvset{breaklines=true, breakanywhere=true, breaknonspaceingroup=true}
+    keep-tex: true
+    # mainfont: texgyrepagella-regular.otf
+    # mainfont: "SourceSansPro-Regular.ttf"
+    pagestyle: headings
+    # LINK COLORS
+    citecolor: BrickRed
+    linkcolor: BrickRed
+    urlcolor: BrickRed
+    # FONTS CONFIG
+    mainfont: "Iowan Old Style"
+    # mainfont: "Palatino"
+    # mainfont: "Source Sans Pro"
+    # sansfont: "Diverda Sans Com"
+    sansfont: "Montserrat"
+    # sansfont: "Source Sans Pro"
+    # monofont: "Bitstream Vera Sans Mono"
+    # monofont: "Fira Code"
+    # monofont: "FiraMono-Regular.ttf"
+    # monofont: "Inconsolata"
+    monofont: "Monaco"
+    mainfontoptions:
+      - Numbers=Proportional
+    monofontoptions: 
+      - Scale=0.8
+      # - Scale=MatchLowercase
+    
+

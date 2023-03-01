@@ -1,0 +1,3 @@
+# Acerca del autor {-}
+
+Héctor Fabio Espitia-Navarro es un científico de datos (Data Scientist) en la compañía 3M, enfocado en Bionformática. Obtuvo su título de Ingeniero en Sistemas de la Universidad del Valle, en Cali, Colombia y posteriormente un Máster en Ingeniería de la misma universidad. Después de su Máster, obtuvo un doctorado en Bioinformática en el Georgia Institute of Technology, en Atlanta, Georgia (EE.UU.). Desde el pregrado ha estado enfocado en el desarrollo de algoritmos y software para Bioinformática. 

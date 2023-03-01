@@ -1,0 +1,126 @@
+# Linux
+
+```{r}
+#| echo: false
+#| eval: true
+```
+
+Para ser exactos Linux no es un sistema operativo (SO) *per se*, es un núcleo o *kernel* usado en muchos SOs. Sin embargo, de manera genérica los SOs que usan este *kernel* toman el nombre Linux. Un *kernel* es la base del SO que tiene control absoluto sobre todos los dispositivos o *hardware* de un computador (memoria, procesador, disco, etc.).
+
+El *kernel* Linux fue creado por Linus Torvalds como una alternativa del SO Unix. Después de ser liberado en septiembre de 1991, el *kernel* Linux se convirtió rápidamente en la base del SO GNU, un proyecto que buscaba reemplazar al SO Unix. Dado que Linux tiene características parecidas al SO Unix, se considera como un sistema "similar a Unix" (Unix-*like*), también conocido como UN\*X o \*nix. Los SOs (o distribuciones) Linux empaquetan el *kernel* junto con otros componentes como bibliotecas, el sistema gráfico y de ventanas, y programas (editores de texto, ofimática, administrador de archivos, etc.). Se estima que actualmente existen más de 300 distribuciones Linux mantenidas activamente [@suseWhatLinuxDistribution], entre las que se encuentran Ubuntu, Debian, Fedora, y Mint como algunas de las más populares.
+
+## Instalación entorno Linux
+
+## Instalación nativa
+
+El entorno ideal Linux es aquel en donde se ejecuta de manera nativa en la máquina. La gran ventaja de ejecutar un SO nativamente es que tiene control exclusivo de todos los recursos del computador (memoria RAM, almacenamiento en disco, y núcleos de procesamiento), por lo que puede explotar al máximo las características de la máquina. La desventaja es que el usuario requiere tener destrezas informáticas medias o avanzadas para su instalación. Esto es válido para cualquier SO, bien sea Linux, Windows, o macOS, por ejemplo. Linux puede ser instalado como único SO o junto con otros SOs (por ejemplo Windows) en la máquina, pero en todo caso, solo un SO puede ser ejecutado a la vez.
+
+En aras del tiempo y la practicidad, no se tratará aquí la instalación de Linux de manera nativa. Sin embargo, en caso de que el lector quiera explorar esta opción, se recomienda leer la guía oficial de Ubuntu Linux ["*Install Ubuntu desktop*"](https://ubuntu.com/tutorials/install-ubuntu-desktop) en inglés, o la guía ["Como instalar Ubuntu 20.04 (u otra distro Linux) en tu equipo"](https://osl.ugr.es/2020/05/20/como-instalar-ubuntu-1/).
+
+### Windows WSL
+
+Una opción práctica es instalar el Subsistema de Windows para Linux (WSL del inglés *Windows Subsystem for Linux*) si se cuenta con una máquina con Windows 10/11. El WSL es una característica de Windows 10/11 que permite ejecutar programas de Linux en Windows de manera nativa [@microsoftWhatWindowsSubsystem]. Aunque esta instalación es práctica, puede dar problemas en algunos usos específicos. Sin embargo, para el objetivo de este manual la instalación de Windows WSL es perfectamente válida y funcional. En el @sec-instalacion-wsl) se explica paso a paso cómo instalar WSL.
+
+### Máquina Virtual
+
+Otra opción para instalar Linux es usar una máquina virtual. Una máquina virtual es una instancia simulada de un computador con todos sus recursos. Para nuestros propósitos y suponiendo que usted cuenta con un computador con Windows, la instancia simulada o máquina virtual será Linux. Esta máquina virtual se ejecutará en su equipo físico con Windows a través de un programa de virtualización, que en este caso será VirtualBox[^linux-1]. En el @sec-ubuntu-mv se describe todo el proceso paso a paso para instalar Linux como una máquina virtual usando VirtualBox.
+
+[^linux-1]: <https://www.virtualbox.org>
+
+## La línea de comandos {#sec-command_line}
+
+La línea de comandos es una interfaz de solo texto que permite la comunicación del usuario con el computador. La comunicación se realiza a través de la entrada de órdenes llamadas "comandos", las cuales son interpretadas por el *shell*. El *shell* es un programa que actúa como interfaz entre el usuario y el *kernel*, esto es, recibe los comandos, los pasa al *kernel*, recibe la respuesta del *kernel*, y finalmente la pasa al usuario.
+
+La línea de comandos es la principal herramienta utilizada para hacer bioinformática en Linux, y se accede mediante el "emulador de la terminal" o símplemente "terminal". La terminal es un programa que permite la entrada de comandos en un ambiente gráfico (una ventana), y su apariencia y características dependen del SO. En este manual se usará Ubuntu Linux 20.04 para todos los ejemplos presentados (ver @sec-ubuntu-mv para instalar Ubuntu).
+
+Para abrir la terminal en Ubuntu basta con hacer clic en el botón Aplicaciones en el *dash* (barra lateral), y a continuación escribir "terminal" en la barra de búsqueda. La @fig-1-01 y @fig-1-02 muestran los pasos para abrir la terminal.
+
+![Escritorio de Ubuntu Linux 20.04. El botón Aplicaciones (recuadro rojo), ubicado en la parte inferior del *dash* (barra lateral) es parecido al botón Inicio de Windows, y permite buscar e iniciar programas.](images/chapters/chapter_02/image001.png){#fig-1-01 width="80%"}
+
+![Barra de búsqueda Ubuntu Linux 20.04. La barra de búsqueda permite buscar cualquier programa instalado en Ubuntu. En este caso se muestra el resultado después de buscar la terminal.](images/chapters/chapter_02/image002.png){#fig-1-02 fig-align="center" width="80%"}
+
+Al hacer clic en el ícono de la terminal, la ventana de la terminal se inicia (@fig-1-03).
+
+![La terminal de Ubuntu Linux 20.04.](images/chapters/chapter_02/image003.png){#fig-1-03 width="80%"}
+
+Lo primero que verá en la línea de comandos de la terminal será una línea llamada el *command prompt* (también, solo *prompt*) o símbolo del sistema que luce parecido a esto:
+
+``` bash
+hector@Ubuntu:~$
+```
+
+En el ejemplo anterior del símbolo del sistema, se pueden identificar los siguientes elementos:
+
+-   `hector`: el nombre del usuario actual
+-   `Ubuntu`: el nombre de la máquina
+-   `~`: El directorio actual. En `bash`, el *shell* o intérprete de comandos por defecto, la virgulilla (`~`), es un carácter especial que equivale (o "expande") a la ubicación del directorio *home*, en este caso `/home/hector`[^linux-2].
+
+[^linux-2]: Para saber más acerca del directorio *home* consulte la @sec-home_dir.
+
+En adelante, se asume que todos los comandos descritos en este texto serán ejecutados a través de la terminal de Ubuntu.
+
+## Los comandos
+
+Los comandos son programas que realizan tareas específicas en el sistema. Así, existe un comando para cada acción que el usuario desea ejecutar en el SO: uno para listar los archivos en un directorio (`ls`) , uno para crear directorios (`mkdir`), uno para copiar archivos (`cp`), etc.
+
+Cada comando se ejecuta en la terminal invocando el nombre respectivo, escrito todo en minúsculas, y a continuación presionando al tecla **Enter**. Por ejemplo, para conocer el directorio actual, digite el comando `pwd` y a continuación presione **Enter**. El resultado del comando `pwd` muy seguramente será algo como `/home/NOMBRE_DE_USUARIO`, en donde `NOMBRE_DE_USUARIO` corresponderá al usuario actual que está usando la terminal (@fig-1-04).
+
+![Ejecución del comando pwd.](images/chapters/chapter_02/image004.png){#fig-1-04 width="55%"}
+
+### Anatomía de los comandos
+
+Los comandos se componen de tres partes: el nombre, las opciones, y los argumentos:
+
+``` bash
+nombre_comando [OPCIONES] ARG_1 ... ARG_N
+```
+
+La linea anterior es una representación de la estructura de los comandos. Como se dijo, el nombre (`nombre_comando`) sirve para invocar el comando y siempre será estará ubicado en primer lugar.
+
+::: callout-note
+En la estructura o sintaxis de los comandos, los corchetes `[]` significan que los argumentos son opcionales, por eso las opciones se presentaron como `[OPCIONES]`. Algunas veces, puede ver los argumentos obligatorios entre símbolos de mayor y menor que: `<ARG_1>`
+:::
+
+Las opciones (`[OPCIONES]`) se pueden agregar (o no, pues son opcionales) para modificar el comportamiento de un comando. Las opciones consisten en palabras (una o más letras) que se escriben siempre después del nombre del comando y que van precedidas de uno o dos guiones (`-` o `--`), p. ej. `comando -o` o `comando --opcion`. En algunos casos, las opciones requieren valores, p. ej. `comando --opcion valor`.
+
+Los argumentos (`ARG_1 … ARG_N`) son valores (uno o más) que se pasan al comando y que, en algunos casos, son requeridos (obligatorios) para que el comando funcione.
+
+### Ayuda de los comandos
+
+Un aspecto clave para el uso de los comando es la ayuda de cada uno. Aunque existen decenas de comandos en Linux y su uso depende en gran medida de la buena memoria del usuario para recordarlos, no es necesario recordar cada detalle acerca de los comandos. Solo basta con recordar el nombre del comando y siempre se podrá consultar su ayuda abreviada o extendida.
+
+#### La ayuda
+
+La ayuda es un mensaje que provee la información más básica a cerca del uso de un comando, por lo que se le conoce como ayuda corta o abreviada. El mensaje de ayuda generalmente describe la estructura o manera de usarlo (*usage*), la función que realiza el comando, y las opciones y argumentos disponibles.
+
+En la mayoría de los casos la ayuda se consulta agregando la opción `--help` al comando. Por ejemplo, para consultar la ayuda del comando `mkdir`, basta con ejecutar:
+
+```{bash}
+mkdir --help
+```
+
+::: callout-warning
+Si usa `--help` con el comando `pwd` en Ubuntu, tal vez obtendrá un error. Esto se debe a que Ubuntu usa por defecto una versión distinta del comando `pwd`, la cual no acepta esta opción. Para que funcione correctamente debe ejecutar `/usr/bin/pwd --help`.
+:::
+
+#### El manual
+
+Cuando se requiere ver todas las opciones y argumentos de un comando junto con información detallada de las características, uso, y ejemplos, se puede consultar el manual o ayuda extendida, siempre que esté disponible. El manual se consulta mediante el comando `man` seguido del nombre del comando de cual se desea conocer más información. Por ejemplo, para consultar el manual del comando `mkdir`, se ejecuta el la orden:
+
+``` bash
+man mkdir
+```
+
+![Manual del comando `mkdir` en la terminal, generado con la orden `man mkdir`.](images/chapters/chapter_02/image005.png){#fig-man_mkdir width="75%"}
+
+El manual es desplegado en un modo especial que permite navegar a través del contenido usando las teclas de dirección ($\textuparrow$/$\textdownarrow$) o de avance página (**RePág**/**AvPág** o **PageUp**/**PageDown** en inglés). Como verá, el manual es mucho más extenso comparado con el mensaje de ayuda del comando (@fig-man_mkdir).
+
+Para salir de este modo y regresar a la línea de comandos se presiona la tecla **Q**.
+
+## Lecturas adicionales
+
+-   [What is Linux and Why There are 100's of Linux Distributions?](https://itsfoss.com/what-is-linux/)
+-   [Linux](https://en.wikipedia.org/wiki/Linux)
+-   [Why do Bioinformaticians Avoid Using Windows?](https://towardsdatascience.com/why-do-bioinformaticians-avoid-using-windows-c5acb034f63c)
+-   [Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
+-   [An Introduction to the Linux Terminal](https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal)

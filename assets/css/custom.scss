@@ -1,0 +1,20 @@
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+a {
+    text-decoration: none;
+}
+
+.wrapfigure {
+  float: right;
+}
+
+/*  background-color: rgba(233,236,239,.65);
+  background-color: #e9ecef;
+, .cell-output-stdout*/
+.cell-output {
+  background-color: #faf9f8;
+  border: 1px solid #faf9f8;
+  border-radius: .25rem;
+  padding: .4em;
+  margin-bottom: 1em;
+}

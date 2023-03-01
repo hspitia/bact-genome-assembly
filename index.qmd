@@ -1,0 +1,64 @@
+# Bienvenid\@ {.unnumbered}
+
+Este
+
+## Por qué leer este manual {.unnumbered}
+
+## Convenciones {.unnumbered}
+
+El código fuente, nombres de archivos, y los comandos y su salida, están formateados en fuente monoespaciada. Por ejemplo, `ls`, `/ruta/al/archivo.txt` o el siguiente comando y su salida:
+
+```{bash}
+ls -l /home
+```
+
+Las palabras en idiomas diferentes al español aparecen en cursiva, p. ej. *kernel*, o *dash*.
+
+### Bloques especiales {.unnumbered}
+
+Textos con información de especial atención se presentan en bloques (recuadros) especiales que se diferencian por su color. Existen cinco tipos de bloques especiales:
+
+::: callout-note
+Este es un ejemplo de una nota.
+:::
+
+::: callout-important
+Este es un texto que corresponde a una información importante.
+:::
+
+::: callout-tip
+Así se ven los consejos o trucos
+:::
+
+::: callout-caution
+Este bloque denota una información de precaución
+:::
+
+::: callout-warning
+Este bloque denota una información de advertencia.
+:::
+
+## Software utilizado
+
+Este libro se creó usando el sistema Quarto con el editor RStudio. Para saber más acerca de libros Quarto visite <https://quarto.org/docs/books>.
+
+### Sesión R
+
+```{r}
+#| code-overflow: wrap
+xfun::session_info()
+```
+
+## Estructura del manual {.unnumbered}
+
+Contenido tentativo (puede cambiar orden y/o contenido)
+
+-   Preparación del entorno de trabajo
+    -   Estructura de directorios
+
+    -   Ambiente conda e instalación de programas
+-   Descarga de datos
+-   Control de calidad y limpieza de datos
+-   Ensamblaje de genomas con SPAdes
+-   Control de calidad del ensamblaje
+-   Anotación funcional con PROKKA
