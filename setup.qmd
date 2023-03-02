@@ -1,24 +1,274 @@
-<!-- \mainmatter -->
-
 # Preparación del entorno de trabajo
+
+```{r}
+#| echo: false
+#| eval: true
+```
 
 ## Estructura de directorios
 
--   data
--   results
-    -   00_clean_data
+Para que los datos, código, y resultados estén organizados en directorios independientes, primero crearemos la estructura de directorio del proyecto de ensamblaje.
 
-    -   01_assembly
+Abra una terminal y ejecute las siguientes órdenes:
 
-    -   02_assembly_qc
+```{bash}
+#| eval: false
+mkdir -p ensamblaje/{datos,resultados,scripts}
+mkdir -p ensamblaje/resultados/{00_datos_limpios,01_ensamblaje,02_ensamblaje_qc,03_anotacion}
+```
 
-    -   03_annotation
--   scripts
+::: callout-important
+A partir de aquí, se asume que usted debe ejecutar en la terminal todos los comandos mostrados.
+:::
 
-## Ambiente conda e instalación de programas
+La estructura final del directorio del directorio del proyecto se puede ver con el comando `tree`:
+
+```{bash}
+#| eval: false
+#| echo: true
+tree -L 2 ensamblaje
+```
+
+```{bash}
+#| echo: false
+tree -L 2 -n ensamblaje | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
+```
+
+## Ambiente Conda e instalación de programas
+
+Una manera eficiente y rápida para instalar todos los programas necesarios para el ensamblaje y anotación de los genomas, consiste en usar Conda[^setup-1], un software de libre distribución para administrar ambientes de software, e instalación de programas.
+
+[^setup-1]: [Documentación de Conda (en inglés)](https://docs.conda.io/en/latest/)
 
 ### Instalación conda (mamba forge)
 
-### Creación del ambiente conda
+Instalaremos una implementación de Conda más rápida y eficiente llamada **mamba**. Además, esta implementación (miniforge) viene configurada para instalar programas desde una fuente no comercial.
 
-### Instalación de programas
+Primero, descarguemos el instalador:
+
+```{bash}
+#| eval: false
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+```
+
+::: callout-note
+Toda la información acerca de miniforge y otros instaladores están disponibles en <https://github.com/conda-forge/miniforge>
+:::
+
+Ahora iniciemos el instalador:
+
+```{bash}
+#| eval: false
+# Adicionar permiso de ejecución
+chmod +x Mambaforge-Linux-x86_64.sh
+# Ejecutar el instalador
+./Mambaforge-Linux-x86_64.sh
+```
+
+Verá un mensaje de los términos de la licencia como este:
+
+```{bash}
+#| echo: false
+echo "Welcome to Miniforge-pypy3 22.11.1-4
+
+In order to continue the installation process, please review the license
+agreement.
+Please, press ENTER to continue
+>>>"
+```
+
+Presione la tecla `<ENTER>` varias veces hasta que el instalador solicite aceptar los términos de la licencia:
+
+```{bash}
+#| echo: false
+echo "Do you accept the license terms? [yes|no]
+[no] >>> "
+```
+
+Responda `yes`
+
+A continuación el instalador solicitará el lugar donde instalará Mambaforge. Puede confirmar la ubicación por defecto (en su directorio *home*: `~/mambaforge`) presionando `<ENTER>`:
+
+```{bash}
+#| echo: false
+echo "Mambaforge will now be installed into this location:
+/home/hector/mambaforge
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+[/home/hector/mambaforge] >>>"
+```
+
+Una vez el instalador finaliza la copia de archivos, le preguntará si desea inicializar Mabaforge:
+
+```{bash}
+#| echo: false
+echo "...
+Transaction finished
+installation finished.
+Do you wish the installer to initialize Mambaforge
+by running conda init? [yes|no]
+[no] >>> "
+```
+
+Responda `yes`. Después, verá un mensaje que indica los cambios realizados en los archivos de configuración para inicializar Mambaforge:
+
+```{bash}
+#| echo: false
+echo -e "...
+no change     /home/hector/mambaforge/bin/conda
+no change     /home/hector/mambaforge/bin/conda-env
+no change     /home/hector/mambaforge/bin/activate
+no change     /home/hector/mambaforge/bin/deactivate
+no change     /home/hector/mambaforge/etc/profile.d/conda.sh
+no change     /home/hector/mambaforge/etc/fish/conf.d/conda.fish
+no change     /home/hector/mambaforge/shell/condabin/Conda.psm1
+no change     /home/hector/mambaforge/shell/condabin/conda-hook.ps1
+no change     /home/hector/mambaforge/lib/python3.10/site-packages/xontrib/conda.xsh
+no change     /home/hector/mambaforge/etc/profile.d/conda.csh
+modified      /home/hector/.bashrc
+
+==> For changes to take effect, close and re-open your current shell. <==
+
+Added mamba to /home/hector/.bashrc
+
+==> For changes to take effect, close and re-open your current shell. <==
+"
+```
+
+Para que la instalación tome efecto, cierre y abra nuevamente la terminal.
+
+Seguramente cuando abra nuevamente la terminal, notará que el *prompt* luce diferente; algo parecido a esto:
+
+``` bash
+(base) hector@Ubuntu:~$
+```
+
+Esto es debido a que Conda usa el *prompt* como medio para informar el ambiente se encuentra activo (en uso) actualmente, mostrándolo entre paréntesis al inicio del prompt. En el ejemplo anterior aparece la palabra `base`; este es el nombre del ambiente "base" por defecto de Conda.
+
+### Creación del ambiente Conda
+
+El siguiente paso es crear un ambiente Conda en donde se instalarán todas los programas requeridos. Un ambiente es un directorio que contiene una colección especifica de paquetes (programas) de Conda (con una versión específica) que se han instalado.
+
+Para crear el ambiente, ejecute las siguientes órdenes:
+
+```{bash}
+#| echo: true
+#| eval: false
+mamba create -n ensam
+```
+
+```{bash}
+#| echo: false
+echo "...
+Looking for: []
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+To activate this environment, use
+
+     $ mamba activate ensam
+
+To deactivate an active environment, use
+
+     $ mamba deactivate"
+```
+
+Como pudo ver, `mamba` despliega un mensaje de confirmación de creación del ambiente.
+
+::: callout-important
+Para poder usar el ambiente creado, siempre se debe activarlo primero:
+
+```{bash}
+#| echo: true
+#| eval: false
+mamba activate <ambiente>
+```
+
+donde `<ambiente>` es el nombre del ambiente creado.
+
+Cuando ya no se necesita el ambiente, se debe desactivar:
+
+```{bash}
+#| eval: false
+mamba deactivate
+```
+:::
+
+### Instalación de paquetes
+
+Ahora instalaremos los paquetes requeridos. Primero se activa el ambiente:
+
+```{bash}
+#| eval: false
+mamba activate ensam
+```
+
+::: callout-note
+Cuando se activa correctamente, podrá ver el nombre del ambiente recién activado en el *prompt*, en este caso `ensam` en lugar de `base`:
+
+``` bash
+(ensam) hector@Ubuntu:~$
+```
+:::
+
+Ahora se instalan los paquetes:
+
+```{bash}
+#| eval: false
+mamba install -c bioconda csvtk fastp fastqc java-jdk multiqc pigz prokka \
+  quast spades sra-tools wget
+```
+
+A continuación verá algunos mensajes y barras de progreso mientras mamba descarga los listados de paquetes y busca los paquetes que se ordenaron instalar. Al final mamba solicitará que confirme la instalación de los paquetes:
+
+```{bash}
+#| echo: false
+echo "...
+  Summary:
+
+  Install: 289 packages
+
+  Total download: 1GB
+
+────────────────────────────────────────────────────────
+
+
+Confirm changes: [Y/n]"
+```
+
+Confirme escribiendo `Y` y después presione `<ENTER>`. De nuevo verá una serie de tareas completadas y barras de progreso mientras la instalación transcurre.
+
+Aunque se ordenó instalar 11 paquetes, cada uno de ellos requiere mútiples dependencias, es decir, paquetes adicionales para funcionar. Aquí es donde se facilitan las cosas: conda/mamba se encarga de revisar las dependencias de cada paquete, instalarlas y configurarlas automáticamente para que cada programa funcione adecuadamente.
+
+Al finalizar la instalación verá un mensaje parecido a este:
+
+```{bash}
+#| echo: false
+echo "...
+Downloading and Extracting Packages
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: \ The default QUAST package does not include:
+* GRIDSS (needed for structural variants detection)
+* SILVA 16S rRNA database (needed for reference genome detection in metagenomic datasets)
+* BUSCO tools and databases (needed for searching BUSCO genes) -- works in Linux only!
+
+To be able to use those, please run
+    quast-download-gridss
+    quast-download-silva
+    quast-download-busco
+
+done"
+```
+
+Ahora todo el software requerido para el análisis de los datos está instalado.
+
+
+
+
