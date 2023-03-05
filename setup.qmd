@@ -243,7 +243,7 @@ Confirm changes: [Y/n]"
 
 Confirme escribiendo `Y` y después presione `<ENTER>`. De nuevo verá una serie de tareas completadas y barras de progreso mientras la instalación transcurre.
 
-Aunque se ordenó instalar 11 paquetes, cada uno de ellos requiere mútiples dependencias, es decir, paquetes adicionales para funcionar. Aquí es donde se facilitan las cosas: conda/mamba se encarga de revisar las dependencias de cada paquete, instalarlas y configurarlas automáticamente para que cada programa funcione adecuadamente.
+Aunque se ordenó instalar 11 paquetes, cada uno de ellos requiere múltiples dependencias, es decir, paquetes adicionales para funcionar. Aquí es donde se facilitan las cosas: conda/mamba se encarga de revisar las dependencias de cada paquete, instalarlas y configurarlas automáticamente para que cada programa funcione adecuadamente.
 
 Al finalizar la instalación verá un mensaje parecido a este:
 

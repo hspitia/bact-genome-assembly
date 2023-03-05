@@ -1,2 +1,114 @@
-# 
+# Obtención de datos
 
+```{r}
+#| echo: false
+#| eval: true
+```
+
+## Software requerido
+
+| Software  | Versión | Descripción                                                                                                                                                                          |
+|------------------|------------------|-------------------------------------|
+| SRA Tools | 3.0.3   | Colección de herramientas para descargar datos desde la base de datos SRA (del inglés *Sequence Read Archive*) del NCBI (del inglés *National Center for Biotechnology Information*) |
+
+: Lista de programas requeridos para esta parte de la guía.
+
+## Datos
+
+Descargaremos cuatro muestras de secuenciación de genoma completo o WGS (del inglés *Whole Genome Sequencing*) del organismo *Helicobacter* *pylori*, para ser ensambladas. Para descagar estas muestras necesitaremos los identificadores (números de acceso o *accession number* en inglés) en la base de datos SRA:
+
+1.  SRR22388518
+
+2.  SRR22388519
+
+3.  SRR18335437
+
+4.  SRR18335438
+
+## Descarga
+
+Para empezar a descargar las muestras, abra una terminal y ejecute las órdenes que se dan a continuación.
+
+::: callout-warning
+Siempre que vea comentarios (líneas empezando con `#`) en las cajas de comandos, no los digite en la terminal. Estos comentarios solo proveen información adicional a cerca de cada comando.
+:::
+
+::: callout-note
+La descarga de cada muestra toma aproximadamente cinco minutos (o más), dependiendo de la velocidad de su conexión a Internet. No se preocupe si no ve ningún avance aparente después de ejecutar el comando de descarga (`fasterq-dump`).
+:::
+
+::: callout-tip
+-   Si quiere ver el progreso de cada descarga, use la opción `-p` (o `--progress`) con `fasterq-dump`
+-   Explore otras opciones útiles de `fasterq-dump` consultando la ayuda: `fasterq-dump --help`
+:::
+
+```{bash}
+#| eval: false
+# Entrar al directorio para datos en el directorio del proyecto
+cd ensamblaje/datos
+
+# Descargar las muestras
+fasterq-dump -S SRR22388518
+```
+
+```{bash}
+#| echo: false
+echo "spots read      : 870,940
+reads read      : 1,741,880
+reads written   : 1,741,880"
+```
+
+Finalizada la descarga `fasterq-dump` imprime en pantalla el resumen de las secuencias descargadas y escritas en archivos (salida anterior).
+
+Ahora verifique los archivos descargados:
+
+```{bash}
+#| eval: false
+ls -lh
+```
+
+```{bash}
+#| echo: false
+# cd $HOME/projects/binf-guide/ensamblaje/datos
+# ls
+echo "total 962M
+-rw-rw-r-- 1 hector hector 481M mar  2 14:40 SRR22388518_1.fastq
+-rw-rw-r-- 1 hector hector 481M mar  2 14:40 SRR22388518_2.fastq"
+```
+
+Como puede observar, hay dos archivos descargados con la extensión `.fastq`. Veamos la estructura de nombre de los archivos descargados:
+
+       SRR22388518       _            1                .         fastq
+           |                          |                            |
+    (accession number)      (conjunto de secuencias)      (extensión de archivo)
+
+::: callout-important
+Hay dos archivos puesto que la muestra se secuenció con tecnología Illumina *paired-end*, en la cual resultan dos reads (secuencias), *forward* (`_1`) y *reverse* (`_2`), de secuenciar los extremos de una molécula de ADN. En la @fig-paired-end se detalla la ubicación relativa de los dos reads respecto del fragmento de ADN secuenciado. En el archivo `_1` están guardas todas las secuencias *forward* y en el archivo `_2`, todas las secuencias *reverse*.
+
+![Representación esquemática de la secuenciación paired-end.](assets/images/paired-end_schematic.png){#fig-paired-end fig-align="center"}
+:::
+
+y cuyo nombre sigue la estructura `accession number` + `read set` + `extensión` El formato fastq[^data-1] [@cock2010] es el estándar *de facto* para datos de secuenciación de segunda generación y es usado, entre otras, por la tecnología Illumina. Este formato almacena tanto las secuencias de ADN como la calidad de cada base secuenciada.
+
+[^data-1]: [Wikipedia: FASTQ Format](https://en.wikipedia.org/wiki/FASTQ_format)
+
+Ahora descarguemos el resto de muestras:
+
+```{bash}
+#| eval: false
+fasterq-dump -S SRR22388519
+
+fasterq-dump -S SRR18335437
+
+fasterq-dump -S SRR18335438
+```
+
+Finalmente, aunque no es necesario, es una buena práctica comprimir las archivos descargados para que ocupen menos espacio en disco:
+
+```{bash}
+#| eval: false
+gzip *.fastq
+```
+
+
+## Referencias

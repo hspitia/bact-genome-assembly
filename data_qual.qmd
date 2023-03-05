@@ -1,7 +1,1 @@
-<!-- \mainmatter -->
-
-# Preparación del entorno de trabajo
-
-## Estructura de directorios
-
-## Ambiente conda e instalación de programas
+# Control de calidad y limpieza de datos
