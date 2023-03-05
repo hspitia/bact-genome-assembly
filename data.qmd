@@ -110,5 +110,18 @@ Finalmente, aunque no es necesario, es una buena práctica comprimir las archivo
 gzip *.fastq
 ```
 
+Como verá, los archivos tienen ahora la extensión `.fastq.gz`, es decir, se agregó la extensión `.gz` (gzip) para indicar que están comprimidos:
+
+```{bash}
+#| eval: false
+ls
+```
+
+```{bash}
+#| echo: false
+command
+```
+
+
 
 ## Referencias
