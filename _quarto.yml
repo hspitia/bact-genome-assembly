@@ -66,7 +66,9 @@ format:
     mainfont: "Source Sans Pro"
     # monofont: "Bitstream Vera Sans Mono"
     monofont: "Fira Code"
-    # monofont: "FiraMono"
+    # monofont: "Fira Mono"
+    # monofont: "Nanum Gothic Coding"
+    # monofont: "Roboto Mono"
     # monofont: "Inconsolata"
     # monofont: "Monaco"
     code-block-bg: "#e9ecef"
@@ -116,9 +118,12 @@ format:
     # sansfont: "Source Sans Pro"
     # monofont: "Bitstream Vera Sans Mono"
     # monofont: "Fira Code"
-    # monofont: "FiraMono-Regular.ttf"
-    # monofont: "Inconsolata"
-    monofont: "Monaco"
+    # monofont: "Fira Mono"
+    monofont: "Inconsolata"
+    # monofont: "Monaco"
+    # monofont: "JetBrains Mono"
+    # monofont: "NanumGothicCoding"
+    # monofont: "Roboto Mono"
     mainfontoptions:
       - Numbers=Proportional
     monofontoptions: 

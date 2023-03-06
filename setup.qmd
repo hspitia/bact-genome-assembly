@@ -12,13 +12,26 @@ Para que los datos, código, y resultados estén organizados en directorios inde
 Abra una terminal y ejecute las siguientes órdenes:
 
 ```{bash}
+#| echo: false
+cd $HOME
+mkdir -p ensamblaje/{datos,resultados,scripts}
+mkdir -p ensamblaje/datos/qc/fastqc
+mkdir -p ensamblaje/resultados/{00_datos_limpios,01_ensamblaje,02_ensamblaje_qc,03_anotacion}
+mkdir -p ensamblaje/resultados/00_datos_limpios/qc/{fastp,fastqc}
+```
+
+
+
+```{bash}
 #| eval: false
 mkdir -p ensamblaje/{datos,resultados,scripts}
+mkdir -p ensamblaje/datos/qc/fastqc
 mkdir -p ensamblaje/resultados/{00_datos_limpios,01_ensamblaje,02_ensamblaje_qc,03_anotacion}
+mkdir -p ensamblaje/resultados/00_datos_limpios/qc/{fastp,fastqc}
 ```
 
 ::: callout-important
-A partir de aquí, se asume que usted debe ejecutar en la terminal todos los comandos mostrados.
+A partir de aquí, se asume que usted debe ejecutar todos los comandos mostrados en la terminal.
 :::
 
 La estructura final del directorio del directorio del proyecto se puede ver con el comando `tree`:
@@ -26,12 +39,13 @@ La estructura final del directorio del directorio del proyecto se puede ver con 
 ```{bash}
 #| eval: false
 #| echo: true
-tree -L 2 ensamblaje
+tree -L 4 ensamblaje
 ```
 
 ```{bash}
 #| echo: false
-tree -L 2 -n ensamblaje | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
+cd $HOME
+tree -L 4 -n ensamblaje | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
 ```
 
 ## Ambiente Conda e instalación de programas
