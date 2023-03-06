@@ -1,0 +1,15 @@
+# El reporte de calidad de FastQC {#sec-a-fastqc}
+
+El reporte de FastQC contiene diferentes secciones llamadas módulos (@fig-fastqc-modules) con información específica de calidad de las secuencias del archivo analizado.
+
+![Módulos del reporte de calidad generado por la herramienta FastQC.](assets/images/fastqc-modules.png){#fig-fastqc-modules fig-align="center" width="30%"}
+
+A continuación se presenta un resumen de cada uno de los módulos extraída de la ayuda de FastQC[^a-fastqc-1]:
+
+[^a-fastqc-1]: Ayuda de FastQC: <https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/>
+
+1.  ***Basic Statistics*** **(estadísticas básicas)*:*** información a cerca del archivo procesado, incluyendo nombre, tipo de codificación de la calidad, número total de secuencias (*reads* o lecturas), longitud de las secuencias y contenido GC.
+
+2.  ***Per base sequence quality*** **(calidad de secuencia por cada base):** Un gráfico de cajas y bigotes que muestra el valor agregado de calidad para cada posición (base) a lo largo de las secuencias del archivo analizado.
+
+3.  ***Per sequence quality scores*** **(valores de calidad por secuencia):** un gráfico del

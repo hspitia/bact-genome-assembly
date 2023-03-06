@@ -10,14 +10,14 @@ book:
     - index.qmd
     - setup.qmd
     - data.qmd
-    # - data_qual.qmd
+    - data_qual.qmd
     # - assembly.qmd
     # - assembly_qual.qmd
     # - annotation.qmd
     # - author.qmd
     # - references.qmd
   appendices:
-    - a-appendix.qmd
+    - a-fastqc.qmd
  
 bibliography: 
   - references.bib

@@ -1,1 +1,147 @@
 # Control de calidad y limpieza de datos
+
+```{r}
+#| echo: false
+#| eval: true
+```
+
+Una vez descargados los datos, es siguiente paso consiste en hacer control de calidad y limpieza de los datos. En este paso primero se revisa la calidad de los datos, y luego se editan o eliminan las lecturas (*reads*) que no tienen la calidad necesaria para conseguir un buen ensamblaje.
+
+::: callout-important
+Es importante comprender la calidad de los datos de secuenciación. Puede aprender sobre el puntaje Phred y cómo se codifica en el formato FASTQ en los artículos de Wikipedia ["Nivel de calidad Phred"](https://es.wikipedia.org/wiki/Nivel_de_calidad_Phred) y [*"FASTQ format"*](https://en.wikipedia.org/wiki/FASTQ_format), respectivamente.
+:::
+
+## Software requerido
+
+| Software | Versión | Descripción                                                                                                             | Ref.                                                                    |
+|------------------|------------------|-------------------|------------------|
+| FastQC   | 0.12.1  | Herramienta para el control de calidad en datos de secuenciación de alto rendimiento                                    | [Sitio Web](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) |
+| MultiQC  | 1.14    | Herramienta para unificar y resumir múltiples reportes generados por FastQC y muchos otros programas de bioinformática. | @ewels2016; [sitio Web](https://multiqc.info/)                          |
+| fastp    | 0.23.2  | Herramienta para el pre-procesamiento rápido de archivos Fastq.                                                         | @chen2018; [repositorio GitHub](https://github.com/OpenGene/fastp)      |
+
+## Determinación de calidad
+
+Para revisar la calidad de los datos descargados, usaremos `fastqc`:
+
+```{bash}
+#| eval: false
+# Entrar al directorio del proyecto y al directorio datos
+cd ensamblaje/datos
+# Crear directorio para datos de calidad
+mkdir -p qc/fastqc
+# Analizar todos los archivos descargados
+fastqc -o qc/fastqc *.fastq.gz
+```
+
+A continuación verá mensajes de progreso de `fastqc`:
+
+```{bash}
+#| echo: false
+echo "application/gzip
+application/gzip
+Started analysis of SRR18335437_1.fastq.gz
+application/gzip
+application/gzip
+application/gzip
+application/gzip
+application/gzip
+application/gzip
+Approx 5% complete for SRR18335437_1.fastq.gz
+Approx 10% complete for SRR18335437_1.fastq.gz
+Approx 15% complete for SRR18335437_1.fastq.gz
+Approx 20% complete for SRR18335437_1.fastq.gz
+Approx 25% complete for SRR18335437_1.fastq.gz
+Approx 30% complete for SRR18335437_1.fastq.gz
+Approx 35% complete for SRR18335437_1.fastq.gz
+Approx 40% complete for SRR18335437_1.fastq.gz
+Approx 45% complete for SRR18335437_1.fastq.gz
+Approx 50% complete for SRR18335437_1.fastq.gz
+Approx 55% complete for SRR18335437_1.fastq.gz
+Approx 60% complete for SRR18335437_1.fastq.gz
+Approx 65% complete for SRR18335437_1.fastq.gz
+Approx 70% complete for SRR18335437_1.fastq.gz
+Approx 75% complete for SRR18335437_1.fastq.gz
+Approx 80% complete for SRR18335437_1.fastq.gz
+Approx 85% complete for SRR18335437_1.fastq.gz
+Approx 90% complete for SRR18335437_1.fastq.gz
+Approx 95% complete for SRR18335437_1.fastq.gz
+Analysis complete for SRR18335437_1.fastq.gz
+..."
+```
+
+Al final, por cada archivo `.fastq` analizado, `fastqc` genera un archivo `.html` con el reporte de calidad y un archivo comprimido (`.zip`):
+
+```{bash}
+#| eval: false
+ls qc/fastqc
+```
+
+```{bash}
+#| echo: false
+echo "SRR18335437_1_fastqc.html  SRR18335438_2_fastqc.html  SRR22388519_1_fastqc.html
+SRR18335437_1_fastqc.zip   SRR18335438_2_fastqc.zip   SRR22388519_1_fastqc.zip
+SRR18335437_2_fastqc.html  SRR22388518_1_fastqc.html  SRR22388519_2_fastqc.html
+SRR18335437_2_fastqc.zip   SRR22388518_1_fastqc.zip   SRR22388519_2_fastqc.zip
+SRR18335438_1_fastqc.html  SRR22388518_2_fastqc.html
+SRR18335438_1_fastqc.zip   SRR22388518_2_fastqc.zip"
+```
+
+::: callout-note
+El archivo comprimido `.zip` contiene una copia del reporte `.html`, gráficos, y archivos de estadísticas.
+:::
+
+### Reporte de calidad FastQC
+
+Analicemos uno de los reportes de calidad de FastQC. Abra el archivo `SRR18335437_1_fastqc.html`. El reporte contiene diferentes secciones que proveen información de calidad de las secuencias (@fig-fastqc-report). Puede consultar información detallada a cerca del reporte y sus secciones (llamados módulos) en el @sec-a-fastqc.
+
+![Captura de pantalla de un reporte de calidad generado con la aplicación FastQC.](assets/images/fastqc-report.png){#fig-fastqc-report fig-align="center" width="90%"}
+
+Tal vez el módulo más importante a revisar es *Per base sequence quality*, el cual muestra el valor de calidad de por cada posición a lo largo de las secuencias del archivo procesado. Típicamente en archivos producidos con tecnología Illumina, la calidad es baja en las primeras siete a 10 bases de las secuencias, incrementando paulatinamente hasta alcanzar su máximo hacia la parte media de la secuencia. Luego la calidad empieza a decrecer hasta encontrar sus mínimos valores al final de la secuencia. Idealmente la calidad deseada para lograr ensamblajes decentes es $Q \ge 20$ (eje Y en el gráfico). Así, este gráfico el crucial para que el usuario decida el número de bases (eje X) que se recortarán en los extremos de las secuencias (inicio 5'; final 3'), los cuales típicamente contienen las secciones con menor calidad.
+
+### Unificando los reportes de calidad
+
+Dado que los reportes de FastQC son independientes por cada archivo de lecturas (`_1` y `_2`) y cada muestra, es difícil tener una visión general de la calidad de todos los datos en conjunto. Conviene entonces unificar los datos de calidad en un solo reporte para lograr una mejor interpretación de la información.
+
+Esta unificación se logra con la aplicación MultiQC. Ejecute la siguiente orden:
+
+```{bash}
+#| eval: false
+multiqc --filename multiqc_report.html --outdir qc qc/fastqc
+```
+
+```{bash}
+#| echo: false
+echo "  /// MultiQC 🔍 | v1.14
+
+|           multiqc | Search path : /home/hector/ensamblaje/datos/qc/fastqc
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 16/16  
+|            fastqc | Found 8 reports
+|           multiqc | Compressing plot data
+|           multiqc | Report      : qc/multiqc_report.html
+|           multiqc | Data        : qc/multiqc_report_data
+|           multiqc | MultiQC complete"
+```
+
+Ahora MultiQC ha generado dos elementos, el archivo `multiqc_report.html` y un directorio `multiqc_report_data` que contiene archivos de estadísticas. Al abrir el reporte `.html` se puede ver la información de calidad de todos los archivos analizados con FastqQC (@fig-multiqc).
+
+![Captura de pantalla del reporte de calidad unificado generado con MultiQC.](assets/images/multiqc-report.png){#fig-multiqc width="90%"}
+
+Revisando la sección "General Statistics" del reporte MultiQC, podemos observar que los tamaños de secuencia varían según la muestra. La longitud (mediana) de secuencias de las muestras `SRR18335437` y `SRR18335438` es de 150 bp, mientras que la de las muestras `SRR22388518` y `SRR22388518` es de 251 bp.
+
+Echemos un vistazo ahora al gráfico de calidad de secuenciación en la sección *"Sequence Quality Histograms"* (@fig-per-base-qual). Además de la diferencia de longitud de secuencias, se puede notar que:
+
+-   La calidad al inicio de las secuencias en todos los archivos es buena ($Q \ge 30$)
+
+-   La calidad al final de las secuencias es aceptable ($Q \ge 20$) en todos los archivos, con excepción de las secuencias *reverse* (`_2`) de las muestras `SRR22388518` y `SRR22388519`.
+
+De estas observaciones se puede concluir que la limpieza de los datos consistirá en recortar las últimas 20 bases (desde la posición 231) de los archivos `SRR22388518_2.fastq.gz` y `SRR22388519_2.fastq.gz` pues son las que presentan baja calidad. Además, como buena práctica, se eliminarán aquellas secuencias cuya calidad promedio sea $Q \lt 20$.
+
+![Gráfico de calidad de secuenciación por base](assets/images/mqc_fastqc_per_base_sequence_quality_plot_1.png){#fig-per-base-qual fig-align="center"}
+
+## Limpieza
+
+-  cmd fastq
+-  cmd fastqc y multiqc
+-  plot calidad después de limpieza
+
+## Referencias

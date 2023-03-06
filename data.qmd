@@ -7,11 +7,13 @@
 
 ## Software requerido
 
-| Software  | Versión | Descripción                                                                                                                                                                          |
-|------------------|------------------|-------------------------------------|
-| SRA Tools | 3.0.3   | Colección de herramientas para descargar datos desde la base de datos SRA (del inglés *Sequence Read Archive*) del NCBI (del inglés *National Center for Biotechnology Information*) |
+| Software  | Versión | Descripción                                                                                                                                                                                              | Ref.                                                    |
+|---------------|---------------|---------------------------|---------------|
+| SRA Tools | 3.0.3   | Colección de herramientas para descargar datos desde la base de datos SRA[^data-1] (del inglés *Sequence Read Archive;* @katz2022) del NCBI (del inglés *National Center for Biotechnology Information*) | [Repositorio GitHub](https://github.com/ncbi/sra-tools) |
 
 : Lista de programas requeridos para esta parte de la guía.
+
+[^data-1]: [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra)
 
 ## Datos
 
@@ -88,9 +90,9 @@ Hay dos archivos puesto que la muestra se secuenció con tecnología Illumina *p
 ![Representación esquemática de la secuenciación paired-end.](assets/images/paired-end_schematic.png){#fig-paired-end fig-align="center"}
 :::
 
-y cuyo nombre sigue la estructura `accession number` + `read set` + `extensión` El formato fastq[^data-1] [@cock2010] es el estándar *de facto* para datos de secuenciación de segunda generación y es usado, entre otras, por la tecnología Illumina. Este formato almacena tanto las secuencias de ADN como la calidad de cada base secuenciada.
+y cuyo nombre sigue la estructura `accession number` + `read set` + `extensión` El formato fastq[^data-2] [@cock2010] es el estándar *de facto* para datos de secuenciación de segunda generación y es usado, entre otras, por la tecnología Illumina. Este formato almacena tanto las secuencias de ADN como la calidad de cada base secuenciada.
 
-[^data-1]: [Wikipedia: FASTQ Format](https://en.wikipedia.org/wiki/FASTQ_format)
+[^data-2]: [Wikipedia: FASTQ Format](https://en.wikipedia.org/wiki/FASTQ_format)
 
 Ahora descarguemos el resto de muestras:
 
@@ -110,7 +112,7 @@ Finalmente, aunque no es necesario, es una buena práctica comprimir las archivo
 gzip *.fastq
 ```
 
-Como verá, los archivos tienen ahora la extensión `.fastq.gz`, es decir, se agregó la extensión `.gz` (gzip) para indicar que están comprimidos:
+Como verá, ahora que los archivos están comprimidos, tienen la extensión `.gz` (`.fastq.gz`):
 
 ```{bash}
 #| eval: false
@@ -119,9 +121,9 @@ ls
 
 ```{bash}
 #| echo: false
-command
+echo "SRR18335437_1.fastq.gz  SRR18335438_2.fastq.gz  SRR22388519_1.fastq.gz
+SRR18335437_2.fastq.gz  SRR22388518_1.fastq.gz  SRR22388519_2.fastq.gz
+SRR18335438_1.fastq.gz  SRR22388518_2.fastq.gz"
 ```
-
-
 
 ## Referencias
