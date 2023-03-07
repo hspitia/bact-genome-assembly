@@ -126,6 +126,10 @@ Ahora MultiQC ha generado dos elementos, el archivo `multiqc_report.html` y un d
 
 ![Captura de pantalla del reporte de calidad unificado generado con MultiQC.](assets/images/multiqc-report.png){#fig-multiqc width="90%"}
 
+::: {.callout-tip}
+Abra el reporte [`ensamblaje/datos/qc/multiqc_report.html`](ensamblaje/datos/qc/multiqc_report.html) para revisar toda la información de calidad evaluada por FastQC.
+:::
+
 Revisando la sección *"General Statistics"* del reporte MultiQC, podemos observar que los tamaños de secuencia varían según la muestra. La longitud (mediana) de secuencias de las muestras `SRR18335437` y `SRR18335438` es de 150 bp, mientras que la de las muestras `SRR22388518` y `SRR22388518` es de 251 bp.
 
 Echemos un vistazo ahora al gráfico de calidad de secuenciación en la sección *"Sequence Quality Histograms"* (@fig-per-base-qual). Además de la diferencia de longitud de secuencias, se puede notar que:
@@ -337,14 +341,16 @@ multiqc \
 
 ```
 
-Tal vez pudo notar que se pasó a MultiQC no solo el directorio de reportes FastQC sino también el directorio con los reportes de fastp. La aplicación se encarga de generar un solo documento `.html` con dos secciones, una para fastp y otra para FastQC.
+Note que en el anterior comando de MultiQC se pasó no solo el directorio de reportes FastQC, sino también el directorio con los reportes de fastp. La aplicación se encarga de generar un solo documento `.html` con dos secciones, una para fastp y otra para FastQC.
 
 ::: {.callout-tip}
 Explore el reporte [`resultados/00_datos_limpios/qc/multiqc_report.html`](ensamblaje/resultados/00_datos_limpios/qc/multiqc_report.html) para ver las diferentes estadísticas de calidad después de haber aplicado los filtros a las muestras.
 :::
 
-Finalmente echemos un vistazo al gráfico de calidad de secuenciación por base generado sobre los datos limpios (@fig-per-base-qual). Podemos verque las dos muestras que te tenían baja calidad hacia el final de las secuencias, ahora están graficadas en color naranja, con una calidad $Q > 20$. De esta manera las muestras están listas para ser ensambladas en sus correspondientes genomas.
+Echemos un vistazo al gráfico de calidad de secuenciación por base generado sobre los datos limpios (@fig-per-base-qual). Podemos ver que las dos muestras que te tenían baja calidad hacia el final de las secuencias, ahora aparecen en color naranja, con una calidad $Q > 20$. 
 
 ![](assets/images/mqc_fastqc_per_base_sequence_quality_plot_1_after_filter.png){#fig-per-base-qual-after}
+
+Finalmente las muestras están listas para ser ensambladas en sus correspondientes genomas.
 
 ## Referencias

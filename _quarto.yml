@@ -1,6 +1,7 @@
 project:
   type: book
-
+  output-dir: docs
+  
 book:
   title: "Ensamblaje y Anotación de Genomas Bacterianos"
   author: "Héctor Fabio Espitia-Navarro"

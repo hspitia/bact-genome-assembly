@@ -2,20 +2,12 @@
 
 Esta es una guía de Bioinformática para ensamblar y anotar genomas bacterianos a partir de muestras de secuenciación de segunda generación (*Next Generation Sequencing, NGS*)
 
-## Por qué leer este manual {.unnumbered}
-
 ## Convenciones {.unnumbered}
 
 El código fuente, nombres de archivos, y los comandos y su salida, están formateados en fuente monoespaciada. Por ejemplo, `ls`, `/ruta/al/archivo.txt` o el siguiente comando y su salida:
 
 ```{bash}
 ls -l /home
-```
-
-```{bash}
-# eval: false
-mkdir -p ensamblaje/{datos,resultados,scripts}
-mkdir -p ensamblaje/resultados/{00_datos_limpios,01_ensamblaje,02_ensamblaje_qc,03_anotacion}
 ```
 
 Las palabras en idiomas diferentes al español aparecen en cursiva, p. ej. *kernel*, o *dash*.
@@ -46,7 +38,7 @@ Este bloque denota una información de advertencia.
 
 ## Software utilizado
 
-Este libro se creó usando el sistema Quarto con el editor RStudio. Para saber más acerca de libros Quarto visite <https://quarto.org/docs/books>.
+Esta uía se creó usando el sistema Quarto con el editor RStudio. Para saber más acerca de creación de libros con Quarto visite <https://quarto.org/docs/books>.
 
 ### Sesión R
 
@@ -54,18 +46,4 @@ Este libro se creó usando el sistema Quarto con el editor RStudio. Para saber m
 #| code-overflow: wrap
 xfun::session_info()
 ```
-
-## Estructura del manual {.unnumbered}
-
-Contenido tentativo (puede cambiar orden y/o contenido)
-
--   Preparación del entorno de trabajo
-    -   Estructura de directorios
-    -   Ambiente conda e instalación de programas
--   Descarga de datos
--   Control de calidad y limpieza de datos
--   Ensamblaje de genomas con SPAdes
--   Control de calidad del ensamblaje
--   Anotación funcional con PROKKA
-
 
