@@ -8,7 +8,7 @@
 Una vez descargados los datos, es siguiente paso consiste en hacer control de calidad y limpieza de los datos. En este paso primero se revisa la calidad de los datos, y luego se editan o eliminan las lecturas (*reads*) que no tienen la calidad necesaria para conseguir un buen ensamblaje.
 
 ::: callout-important
-Es importante comprender la calidad de los datos de secuenciación. Puede aprender sobre el puntaje Phred y cómo se codifica en el formato FASTQ en los artículos de Wikipedia ["Nivel de calidad Phred"](https://es.wikipedia.org/wiki/Nivel_de_calidad_Phred) y [*"FASTQ format"*](https://en.wikipedia.org/wiki/FASTQ_format), respectivamente.
+Es importante comprender la calidad de los datos de secuenciación. Puede aprender sobre el puntaje Phred y cómo se codifica en el formato FASTQ en los artículos de Wikipedia [*"Nivel de calidad Phred"*](https://es.wikipedia.org/wiki/Nivel_de_calidad_Phred) y [*"FASTQ format"*](https://en.wikipedia.org/wiki/FASTQ_format), respectivamente.
 :::
 
 ## Software requerido
@@ -82,23 +82,21 @@ El archivo comprimido `.zip` contiene una copia del reporte `.html`, gráficos, 
 
 ### Reporte de calidad FastQC
 
-Analicemos uno de los reportes de calidad de FastQC. Abra el archivo `SRR18335437_1_fastqc.html`. El reporte contiene diferentes secciones, llamadas módulos, que corresponden a diferentes evaluaciones de calidad que la herramienta hace sobre los datos (@fig-fastqc-report). Puede consultar información detallada a cerca del reporte y sus módulos en el @sec-a-fastqc. Por cada módulo, el reporte presenta un ícono con tres posibles estados (@tbl-fastqc-results)
+Analicemos uno de los reportes de calidad de FastQC. Abra el archivo `SRR18335437_1_fastqc.html`. El reporte contiene diferentes secciones, llamadas módulos, que corresponden a diferentes evaluaciones de calidad que la herramienta hace sobre los datos (@fig-fastqc-report). Puede consultar información detallada (en inglés) a cerca de FastQC y sus módulos en el @sec-a-fastqc-help. Por cada módulo, el reporte presenta un ícono con tres posibles estados de acuerdo al resultado de la evaluación (@tbl-fastqc-results).
 
 |                Símbolo                | Descripción                                                                                                                                                                                                                                                                                                                                         |
-|:--------:|--------------------------------------------------------------|
+|:----------------:|------------------------------------------------------|
 |  ![](assets/images/fastqc-tick.png)   | Pasó. La muestra pasó la evaluación de calidad en esta categoría (módulo). No hay problemas de calidad.                                                                                                                                                                                                                                             |
 | ![](assets/images/fastqc-warning.png) | Advertencia. La muestra tiene un posible problema calidad. El usuario debería revisar la muestra y tomar las medidas necesarias para evitar el error de ser posible. Por la naturaleza de la secuenciación de ADN, es normal que se presenten advertencias en algunos módulos en las muestras sin que signifique que haya un problema real o grave. |
-|  ![](assets/images/fastqc-error.png)  | Falló. La prueba falló la evaluación de calidad en este módulo. El usuario debería corregir                                                                                                                                                                                                                                                         |
+|  ![](assets/images/fastqc-error.png)  | Falló. La muestra falló la evaluación de calidad en este módulo. El usuario debería limpiar los datos para corregir el error.                                                                                                                                                                                                                       |
 
 : Posibles resultados de la evaluación de calidad realizada por la herramienta FastQC {#tbl-fastqc-results}
 
-un símbolo de OK en verde indica que no hay problemas,
-
-si hay o no algún problema con la calidad de los datos en
+De acuerdo con los estados, vemos que las muestras fallaron las evaluaciones de calidad de los módulos *"Per base sequence quality"* y *"Sequence Duplication Levels"*, y el módulo *"Sequence Length Distribution"* tiene una advertencia (@fig-fastqc-report).
 
 ![Captura de pantalla de un reporte de calidad generado con la aplicación FastQC.](assets/images/fastqc-report.png){#fig-fastqc-report fig-align="center" width="90%"}
 
-Tal vez el módulo más importante a revisar es *Per base sequence quality*, el cual muestra el valor de calidad de por cada posición a lo largo de las secuencias del archivo procesado. Típicamente en archivos producidos con tecnología Illumina, la calidad es baja en las primeras siete a 10 bases de las secuencias, incrementando paulatinamente hasta alcanzar su máximo hacia la parte media de la secuencia. Luego la calidad empieza a decrecer hasta encontrar sus mínimos valores al final de la secuencia. Idealmente la calidad deseada para lograr ensamblajes decentes es $Q \ge 20$ (eje Y en el gráfico). Así, este gráfico el crucial para que el usuario decida el número de bases (eje X) que se recortarán en los extremos de las secuencias (inicio 5'; final 3'), los cuales típicamente contienen las secciones con menor calidad.
+Tal vez el módulo más importante a revisar es *"Per base sequence quality"* (@sec-perbase-seq-qual), el cual muestra el valor de calidad de por cada posición a lo largo de las secuencias del archivo procesado. Típicamente en archivos producidos con tecnología Illumina, la calidad es baja en las primeras siete a 10 bases de las secuencias, incrementando hasta alcanzar su máximo hacia la parte media de la secuencia. Luego la calidad empieza a decrecer hasta encontrar sus mínimos valores al final de la secuencia. Comúnmente la calidad mínima para lograr ensamblajes decentes es $Q \ge 20$ (eje Y en el gráfico). Así, este gráfico el crucial para que el usuario decida el número de bases (eje X) que se recortarán en los extremos de las secuencias (inicio 5'; final 3'), los cuales típicamente contienen las secciones con menor calidad.
 
 ### Unificando los reportes de calidad
 
@@ -128,7 +126,7 @@ Ahora MultiQC ha generado dos elementos, el archivo `multiqc_report.html` y un d
 
 ![Captura de pantalla del reporte de calidad unificado generado con MultiQC.](assets/images/multiqc-report.png){#fig-multiqc width="90%"}
 
-Revisando la sección "General Statistics" del reporte MultiQC, podemos observar que los tamaños de secuencia varían según la muestra. La longitud (mediana) de secuencias de las muestras `SRR18335437` y `SRR18335438` es de 150 bp, mientras que la de las muestras `SRR22388518` y `SRR22388518` es de 251 bp.
+Revisando la sección *"General Statistics"* del reporte MultiQC, podemos observar que los tamaños de secuencia varían según la muestra. La longitud (mediana) de secuencias de las muestras `SRR18335437` y `SRR18335438` es de 150 bp, mientras que la de las muestras `SRR22388518` y `SRR22388518` es de 251 bp.
 
 Echemos un vistazo ahora al gráfico de calidad de secuenciación en la sección *"Sequence Quality Histograms"* (@fig-per-base-qual). Además de la diferencia de longitud de secuencias, se puede notar que:
 
@@ -143,14 +141,6 @@ De estas observaciones se puede concluir que la limpieza de los datos consistir�
 ## Limpieza
 
 Usaremos la aplicación fastp para recortar y filtrar las secuencias por calidad. Empecemos procesando la primera muestra:
-
-<!-- SRR22388518 -->
-
-<!-- SRR22388519 -->
-
-<!-- SRR18335437 -->
-
-<!-- SRR18335438 -->
 
 ```{bash}
 #| eval: false
@@ -171,13 +161,13 @@ fastp --verbose \
       --out2 resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz \
       --unpaired1 resultados/00_datos_limpios/SRR22388518_1.unpaired.fastq.gz \
       --unpaired2 resultados/00_datos_limpios/SRR22388518_2.unpaired.fastq.gz \
-      --html resultados/00_datos_limpios/qc/report.fastp.html \
-      --json resultados/00_datos_limpios/qc/report.fastp.json
+      --html resultados/00_datos_limpios/qc/fastp/SRR22388518.report.fastp.html \
+      --json resultados/00_datos_limpios/qc/fastp/SRR22388518.report.fastp.json
 ```
 
 Antes de revisar el resultado, veamos las opciones usadas con el comando y su finalidad:
 
--   `--versbose`: provee información adicional durante el procesamiento de los archivos
+-   `--verbose`: provee información adicional durante el procesamiento de los archivos
 -   `--thread 4`: usa cuatro hilos de ejecución de manera paralela para acelerar el procesamiento de los archivos
 -   `--detect_adapter_for_pe`: detecta las secuencias de adaptadores de secuenciación y las elimina
 -   `--cut_tail`: corta la "cola" (*tail*) de las secuencias, la cual se dijo tiene las bases de más baja calidad
@@ -197,10 +187,164 @@ Antes de revisar el resultado, veamos las opciones usadas con el comando y su fi
 Para conocer todas las opciones disponibles de fastp consulte la ayuda ejecutando `fastp --help`.
 :::
 
-En el anterior comando, en lugar de cortar un número determinado de bases al final de las secuencias, el programa fastp revisa la calidad media de una pequeña porción de 4 bases, llamado ventana, empezando desde el extremo final. Si la calidad media está por debajo del mínimo definido (20 en este caso), fastp recorta esta ventana de las secuencia. Este proceso se repita hasta que no se encuentre una ventana que deba recortarse. Así, solo las secuencias con baja calidad al final son recortadas. Este mismo principio se puede aplicar para el inicio de las secuencias, cuando sea el caso
+En el anterior comando, en lugar de cortar un número determinado de bases al final de las secuencias, se usa la estrategia del programa fastp. Por cada secuencia del archivo, fastp revisa la calidad media de una pequeña porción de 4 bases, llamado ventana, empezando desde el extremo final. Si la calidad media está por debajo del mínimo definido (20 en este caso), fastp recorta esta ventana de la secuencia. Este proceso se repita hasta que no se encuentre una ventana que deba recortarse. Así, solo las secuencias con baja calidad al final son recortadas. Este mismo principio se puede aplicar para el inicio de las secuencias, cuando sea el caso.
 
--   cmd fastp
--   cmd fastqc y multiqc
--   plot calidad después de limpieza
+Veamos ahora el resultado de fastp. Al ejecutar el anterior comando veremos una salida parecida a esto:
+
+```{bash}
+#| echo: false
+echo "Detecting adapter sequence for read1...
+>Illumina TruSeq Adapter Read 1
+AGATCGGAAGAGCACACGTCTGAACTCCAGTCA
+
+Detecting adapter sequence for read2...
+No adapter detected for read2
+
+[19:24:32] start to load data of read1 
+[19:24:32] start to load data of read2 
+[19:24:36] Read1: loading completed with 871 packs 
+[19:24:36] Read2: loading completed with 871 packs 
+[19:24:39] thread 4 data processing completed 
+[19:24:39] thread 4 finished 
+[19:24:39] thread 3 data processing completed 
+[19:24:39] thread 3 finished 
+[19:24:39] thread 2 data processing completed 
+[19:24:39] thread 2 finished 
+[19:24:39] thread 1 data processing completed 
+[19:24:39] thread 1 finished 
+[19:24:39] resultados/00_datos_limpios/SRR22388518_1.unpaired.fastq.gz writer finished 
+[19:24:39] resultados/00_datos_limpios/SRR22388518_2.unpaired.fastq.gz writer finished 
+[19:24:40] resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz writer finished 
+[19:24:40] resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz writer finished 
+[19:24:40] start to generate reports
+ 
+Read1 before filtering:
+total reads: 870940
+total bases: 218350507
+Q20 bases: 198719240(91.0093%)
+Q30 bases: 184185641(84.3532%)
+
+Read2 before filtering:
+total reads: 870940
+total bases: 218399177
+Q20 bases: 175386628(80.3055%)
+Q30 bases: 149084629(68.2624%)
+
+Read1 after filtering:
+total reads: 863093
+total bases: 209876970
+Q20 bases: 193175278(92.0422%)
+Q30 bases: 180122777(85.823%)
+
+Read2 after filtering:
+total reads: 863093
+total bases: 201834951
+Q20 bases: 170111238(84.2823%)
+Q30 bases: 146895463(72.78%)
+
+Filtering result:
+reads passed filter: 1726186
+reads failed due to low quality: 12556
+reads failed due to too many N: 488
+reads failed due to too short: 2650
+reads with adapter trimmed: 150684
+bases trimmed due to adapters: 7399476
+
+Duplication rate: 0.0137782%
+
+Insert size peak (evaluated by paired-end reads): 251
+
+JSON report: resultados/00_datos_limpios/qc/fastp/report.fastp.json
+HTML report: resultados/00_datos_limpios/qc/fastp/report.fastp.html
+
+fastp --verbose --thread 4 --detect_adapter_for_pe --cut_tail --cut_mean_quality 20 --average_qual 20 --report_title Reporte fastp: SRR22388518 --in1 datos/SRR22388518_1.fastq.gz --in2 datos/SRR22388518_2.fastq.gz --out1 resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz --out2 resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz --unpaired1 resultados/00_datos_limpios/SRR22388518_1.unpaired.fastq.gz --unpaired2 resultados/00_datos_limpios/SRR22388518_2.unpaired.fastq.gz --html resultados/00_datos_limpios/qc/fastp/SRR22388518.report.fastp.html --json resultados/00_datos_limpios/qc/fastp/SRR22388518.report.fastp.json 
+fastp v0.23.2, time used: 22 seconds"
+```
+
+Podemos encontrar información importante en los mensajes de la salida, como por ejemplo el número de secuencias y calidad antes y después de aplicar la limpieza o filtrado (secciones `Read1 before filtering:`, `Read2 before filtering:`, `Read1 after filtering:` y `Read2 after filtering:`), y el resumen del número de reads que pasaron y no pasaron el filtro (sección `Filtering result`).
+
+Junto con los archivos de secuencias filtradas, fastp genera un archivo de reporte `.html` y un archivo de estadísticas.
+
+Ahora se deben procesar el resto de los archivos:
+
+```{bash}
+#| eval: false
+
+fastp --verbose \
+      --thread 4 \
+      --detect_adapter_for_pe \
+      --cut_tail \
+      --cut_mean_quality 20 \
+      --average_qual 20 \
+      --report_title 'Reporte fastp: SRR22388519' \
+      --in1 datos/SRR22388519_1.fastq.gz \
+      --in2 datos/SRR22388519_2.fastq.gz \
+      --out1 resultados/00_datos_limpios/SRR22388519_1.clean.fastq.gz \
+      --out2 resultados/00_datos_limpios/SRR22388519_2.clean.fastq.gz \
+      --unpaired1 resultados/00_datos_limpios/SRR22388519_1.unpaired.fastq.gz \
+      --unpaired2 resultados/00_datos_limpios/SRR22388519_2.unpaired.fastq.gz \
+      --html resultados/00_datos_limpios/qc/fastp/SRR22388519.report.fastp.html \
+      --json resultados/00_datos_limpios/qc/fastp/SRR22388519.report.fastp.json
+
+fastp --verbose \
+      --thread 4 \
+      --detect_adapter_for_pe \
+      --cut_tail \
+      --cut_mean_quality 20 \
+      --average_qual 20 \
+      --report_title 'Reporte fastp: SRR18335437' \
+      --in1 datos/SRR18335437_1.fastq.gz \
+      --in2 datos/SRR18335437_2.fastq.gz \
+      --out1 resultados/00_datos_limpios/SRR18335437_1.clean.fastq.gz \
+      --out2 resultados/00_datos_limpios/SRR18335437_2.clean.fastq.gz \
+      --unpaired1 resultados/00_datos_limpios/SRR18335437_1.unpaired.fastq.gz \
+      --unpaired2 resultados/00_datos_limpios/SRR18335437_2.unpaired.fastq.gz \
+      --html resultados/00_datos_limpios/qc/fastp/SRR18335437.report.fastp.html \
+      --json resultados/00_datos_limpios/qc/fastp/SRR18335437.report.fastp.json
+      
+fastp --verbose \
+      --thread 4 \
+      --detect_adapter_for_pe \
+      --cut_tail \
+      --cut_mean_quality 20 \
+      --average_qual 20 \
+      --report_title 'Reporte fastp: SRR18335438' \
+      --in1 datos/SRR18335438_1.fastq.gz \
+      --in2 datos/SRR18335438_2.fastq.gz \
+      --out1 resultados/00_datos_limpios/SRR18335438_1.clean.fastq.gz \
+      --out2 resultados/00_datos_limpios/SRR18335438_2.clean.fastq.gz \
+      --unpaired1 resultados/00_datos_limpios/SRR18335438_1.unpaired.fastq.gz \
+      --unpaired2 resultados/00_datos_limpios/SRR18335438_2.unpaired.fastq.gz \
+      --html resultados/00_datos_limpios/qc/fastp/SRR18335438.report.fastp.html \
+      --json resultados/00_datos_limpios/qc/fastp/SRR18335438.report.fastp.json
+```
+
+### Verificación de calidad después de la limpieza
+
+Finalmente podemos usar FastQC y MultiQC para revisar la calidad de las muestras después de la limpieza:
+
+```{bash}
+#| eval: false
+# Generar reportes con FastQC
+fastqc -o resultados/00_datos_limpios/qc/fastqc *.clean.fastq.gz
+
+# Generar reporte unificado con MultiQC
+multiqc \
+  --filename multiqc_report.html \
+  --outdir resultados/00_datos_limpios/qc \
+  resultados/00_datos_limpios/qc/fastp \
+  resultados/00_datos_limpios/qc/fastqc
+
+```
+
+Tal vez pudo notar que se pasó a MultiQC no solo el directorio de reportes FastQC sino también el directorio con los reportes de fastp. La aplicación se encarga de generar un solo documento `.html` con dos secciones, una para fastp y otra para FastQC.
+
+::: {.callout-tip}
+Explore el reporte [`resultados/00_datos_limpios/qc/multiqc_report.html`](ensamblaje/resultados/00_datos_limpios/qc/multiqc_report.html) para ver las diferentes estadísticas de calidad después de haber aplicado los filtros a las muestras.
+:::
+
+Finalmente echemos un vistazo al gráfico de calidad de secuenciación por base generado sobre los datos limpios (@fig-per-base-qual). Podemos verque las dos muestras que te tenían baja calidad hacia el final de las secuencias, ahora están graficadas en color naranja, con una calidad $Q > 20$. De esta manera las muestras están listas para ser ensambladas en sus correspondientes genomas.
+
+![](assets/images/mqc_fastqc_per_base_sequence_quality_plot_1_after_filter.png){#fig-per-base-qual-after}
 
 ## Referencias
