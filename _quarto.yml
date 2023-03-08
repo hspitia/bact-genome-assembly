@@ -83,7 +83,7 @@ format:
     # mainfont: "Palatino"
     mainfont: "Source Sans Pro"
     # monofont: "Bitstream Vera Sans Mono"
-    monofont: "Fira Code"
+    # monofont: "Fira Code"
     # monofont: "Fira Mono"
     # monofont: "Nanum Gothic Coding"
     # monofont: "Roboto Mono"
