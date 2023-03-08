@@ -1,4 +1,4 @@
-#  Obtención de datos
+# Obtención de datos
 
 ```{r}
 #| echo: false
@@ -8,7 +8,7 @@
 ## Software requerido
 
 | Software  | Versión | Descripción                                                                                                                                                                                              | Ref.                                                    |
-|-----------|---------|--------------------|-----------------|
+|----------------|----------------|----------------------|-------------------|
 | SRA Tools | 3.0.3   | Colección de herramientas para descargar datos desde la base de datos SRA[^data-1] (del inglés *Sequence Read Archive;* @katz2022) del NCBI (del inglés *National Center for Biotechnology Information*) | [Repositorio GitHub](https://github.com/ncbi/sra-tools) |
 
 : Lista de programas requeridos para esta parte de la guía.
@@ -60,7 +60,7 @@ reads read      : 1,741,880
 reads written   : 1,741,880"
 ```
 
-Finalizada la descarga `fasterq-dump` imprime en pantalla el resumen de las secuencias descargadas y escritas en archivos (salida anterior).
+Finalizada la descarga `fasterq-dump` imprime en pantalla el resumen de las secuencias descargadas y escritas en archivos (salida anterior) .
 
 Ahora verifique los archivos descargados:
 

@@ -1,6 +1,6 @@
 /*-- scss:defaults --*/
 // $h2-font-size:          1.6rem !default;
-$headings-font-weight:  600 !default;
+$headings-font-weight:  500 !default;
 // $link-color: #00923f;
 
 /*-- scss:rules --*/
@@ -11,10 +11,11 @@ $headings-font-weight:  600 !default;
   //color: $link-color;
 }
 
+/*
 h1, h2, h3, h4, h5, h6 {
   font-family: "Abel", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
-
+*/
 
 a {
     text-decoration: none;
