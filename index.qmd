@@ -1,5 +1,10 @@
 # Bienvenid\@ {.unnumbered}
 
+```{r}
+#| echo: false
+#| eval: true
+```
+
 Esta es una guía de Bioinformática para ensamblar y anotar genomas bacterianos a partir de muestras de secuenciación de segunda generación (*Next Generation Sequencing, NGS*)
 
 ## Convenciones {.unnumbered}
@@ -35,15 +40,3 @@ Este bloque denota una información de precaución
 ::: callout-warning
 Este bloque denota una información de advertencia.
 :::
-
-## Software utilizado
-
-Esta uía se creó usando el sistema Quarto con el editor RStudio. Para saber más acerca de creación de libros con Quarto visite <https://quarto.org/docs/books>.
-
-### Sesión R
-
-```{r}
-#| code-overflow: wrap
-xfun::session_info()
-```
-
