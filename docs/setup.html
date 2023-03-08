@@ -267,45 +267,68 @@ Importante
 <div class="cell-output cell-output-stdout">
 <pre><code>ensamblaje
 ├── datos
-│&nbsp;&nbsp; └── qc
-│&nbsp;&nbsp;     ├── fastqc
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR18335437_1_fastqc.html
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR18335437_1_fastqc.zip
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR18335437_2_fastqc.html
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR18335437_2_fastqc.zip
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR18335438_1_fastqc.html
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR18335438_1_fastqc.zip
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR18335438_2_fastqc.html
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR18335438_2_fastqc.zip
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR22388518_1_fastqc.html
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR22388518_1_fastqc.zip
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR22388518_2_fastqc.html
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR22388518_2_fastqc.zip
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR22388519_1_fastqc.html
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR22388519_1_fastqc.zip
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── SRR22388519_2_fastqc.html
-│&nbsp;&nbsp;     │&nbsp;&nbsp; └── SRR22388519_2_fastqc.zip
-│&nbsp;&nbsp;     ├── multiqc_report_data
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── multiqc_citations.txt
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── multiqc_data.json
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── multiqc_fastqc.txt
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── multiqc_general_stats.txt
-│&nbsp;&nbsp;     │&nbsp;&nbsp; ├── multiqc.log
-│&nbsp;&nbsp;     │&nbsp;&nbsp; └── multiqc_sources.txt
-│&nbsp;&nbsp;     └── multiqc_report.html
+│   └── qc
+│       └── fastqc
 ├── resultados
-│&nbsp;&nbsp; ├── 00_datos_limpios
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── qc
-│&nbsp;&nbsp; │&nbsp;&nbsp;     ├── fastp
-│&nbsp;&nbsp; │&nbsp;&nbsp;     └── fastqc
-│&nbsp;&nbsp; ├── 01_ensamblaje
-│&nbsp;&nbsp; ├── 02_ensamblaje_qc
-│&nbsp;&nbsp; └── 03_anotacion
+│   ├── 00_datos_limpios
+│   │   └── qc
+│   │       ├── fastp
+│   │       └── fastqc
+│   ├── 01_ensamblaje
+│   ├── 02_ensamblaje_qc
+│   └── 03_anotacion
+└── scripts</code></pre>
+</div>
+</div>
+<!--
+::: {.cell}
+::: {.cell-output .cell-output-stdout}
+```
+
+ensamblaje
+├── datos
+│   └── qc
+│       ├── fastqc
+│       │   ├── SRR18335437_1_fastqc.html
+│       │   ├── SRR18335437_1_fastqc.zip
+│       │   ├── SRR18335437_2_fastqc.html
+│       │   ├── SRR18335437_2_fastqc.zip
+│       │   ├── SRR18335438_1_fastqc.html
+│       │   ├── SRR18335438_1_fastqc.zip
+│       │   ├── SRR18335438_2_fastqc.html
+│       │   ├── SRR18335438_2_fastqc.zip
+│       │   ├── SRR22388518_1_fastqc.html
+│       │   ├── SRR22388518_1_fastqc.zip
+│       │   ├── SRR22388518_2_fastqc.html
+│       │   ├── SRR22388518_2_fastqc.zip
+│       │   ├── SRR22388519_1_fastqc.html
+│       │   ├── SRR22388519_1_fastqc.zip
+│       │   ├── SRR22388519_2_fastqc.html
+│       │   └── SRR22388519_2_fastqc.zip
+│       ├── multiqc_report_data
+│       │   ├── multiqc_citations.txt
+│       │   ├── multiqc_data.json
+│       │   ├── multiqc_fastqc.txt
+│       │   ├── multiqc_general_stats.txt
+│       │   ├── multiqc.log
+│       │   └── multiqc_sources.txt
+│       └── multiqc_report.html
+├── resultados
+│   ├── 00_datos_limpios
+│   │   └── qc
+│   │       ├── fastp
+│   │       └── fastqc
+│   ├── 01_ensamblaje
+│   ├── 02_ensamblaje_qc
+│   └── 03_anotacion
 └── scripts
 
-13 directories, 23 files</code></pre>
-</div>
-</div>
+13 directories, 23 files
+```
+:::
+:::
+
+-->
 </section>
 <section id="ambiente-conda-e-instalación-de-programas" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="ambiente-conda-e-instalación-de-programas"><span class="header-section-number">1.2</span> Ambiente Conda e instalación de programas</h2>
@@ -529,7 +552,7 @@ done</code></pre>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p><a href="https://docs.conda.io/en/latest/">Documentación de Conda (en inglés)</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Documentación de Conda (en inglés): <a href="https://docs.conda.io/en/latest/" class="uri">https://docs.conda.io/en/latest/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Conda-forge: <a href="https://conda-forge.org/" class="uri">https://conda-forge.org/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Miniforge en GitHub: <a href="https://github.com/conda-forge/miniforge" class="uri">https://github.com/conda-forge/miniforge</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>

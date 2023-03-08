@@ -42,15 +42,36 @@ tree -L 4 ensamblaje
 
 ```{bash}
 #| echo: false
+echo "ensamblaje
+├── datos
+│   └── qc
+│       └── fastqc
+├── resultados
+│   ├── 00_datos_limpios
+│   │   └── qc
+│   │       ├── fastp
+│   │       └── fastqc
+│   ├── 01_ensamblaje
+│   ├── 02_ensamblaje_qc
+│   └── 03_anotacion
+└── scripts"
+```
+
+````{=html}
+<!--
+```{bash}
+#| echo: false
 cd $HOME
 tree -L 4 -n ensamblaje | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
 ```
+-->
+````
 
 ## Ambiente Conda e instalación de programas
 
 Una manera eficiente y rápida para instalar todos los programas necesarios para el ensamblaje y anotación de los genomas, consiste en usar Conda[^setup-1], un software de libre distribución para administrar ambientes de software e instalación de programas.
 
-[^setup-1]: [Documentación de Conda (en inglés)](https://docs.conda.io/en/latest/)
+[^setup-1]: Documentación de Conda (en inglés): <https://docs.conda.io/en/latest/>
 
 ### Instalación Conda: mambaforge
 
