@@ -81,7 +81,7 @@ format:
     # mainfont: "Montserrat"
     # mainfont: "Palatino LT Std"
     # mainfont: "Palatino"
-    mainfont: "Source Sans Pro"
+    # mainfont: "Source Sans Pro"
     # monofont: "Bitstream Vera Sans Mono"
     # monofont: "Fira Code"
     # monofont: "Fira Mono"
@@ -90,9 +90,9 @@ format:
     # monofont: "Inconsolata"
     # monofont: "Monaco"
     code-block-bg: "#e9ecef"
-    colorlinks: true
+    # colorlinks: true
     fig-align: center
-    fontsize: 12pt
+    # fontsize: 12pt
     theme: 
       - cosmo
       - assets/css/custom.scss

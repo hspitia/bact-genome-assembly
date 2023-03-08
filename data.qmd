@@ -8,7 +8,7 @@
 ## Software requerido
 
 | Software  | Versión | Descripción                                                                                                                                                                                              | Ref.                                                    |
-|----------------|----------------|----------------------|-------------------|
+|-----------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
 | SRA Tools | 3.0.3   | Colección de herramientas para descargar datos desde la base de datos SRA[^data-1] (del inglés *Sequence Read Archive;* @katz2022) del NCBI (del inglés *National Center for Biotechnology Information*) | [Repositorio GitHub](https://github.com/ncbi/sra-tools) |
 
 : Lista de programas requeridos para esta parte de la guía.
