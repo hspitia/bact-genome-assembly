@@ -323,7 +323,7 @@ fastp --verbose \
       --json resultados/00_datos_limpios/qc/fastp/SRR18335438.report.fastp.json
 ```
 
-### Verificación de calidad después de la limpieza
+## Verificación de calidad después de la limpieza
 
 Finalmente podemos usar FastQC y MultiQC para revisar la calidad de las muestras después de la limpieza:
 

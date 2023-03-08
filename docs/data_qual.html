@@ -226,11 +226,9 @@ div.csl-indent {
   <li><a href="#reporte-de-calidad-fastqc" id="toc-reporte-de-calidad-fastqc" class="nav-link" data-scroll-target="#reporte-de-calidad-fastqc"><span class="toc-section-number">3.2.1</span>  Reporte de calidad FastQC</a></li>
   <li><a href="#unificando-los-reportes-de-calidad" id="toc-unificando-los-reportes-de-calidad" class="nav-link" data-scroll-target="#unificando-los-reportes-de-calidad"><span class="toc-section-number">3.2.2</span>  Unificando los reportes de calidad</a></li>
   </ul></li>
-  <li><a href="#limpieza" id="toc-limpieza" class="nav-link" data-scroll-target="#limpieza"><span class="toc-section-number">3.3</span>  Limpieza</a>
-  <ul class="collapse">
-  <li><a href="#verificación-de-calidad-después-de-la-limpieza" id="toc-verificación-de-calidad-después-de-la-limpieza" class="nav-link" data-scroll-target="#verificación-de-calidad-después-de-la-limpieza"><span class="toc-section-number">3.3.1</span>  Verificación de calidad después de la limpieza</a></li>
-  </ul></li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="toc-section-number">3.4</span>  Referencias</a></li>
+  <li><a href="#limpieza" id="toc-limpieza" class="nav-link" data-scroll-target="#limpieza"><span class="toc-section-number">3.3</span>  Limpieza</a></li>
+  <li><a href="#verificación-de-calidad-después-de-la-limpieza" id="toc-verificación-de-calidad-después-de-la-limpieza" class="nav-link" data-scroll-target="#verificación-de-calidad-después-de-la-limpieza"><span class="toc-section-number">3.4</span>  Verificación de calidad después de la limpieza</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="toc-section-number">3.5</span>  Referencias</a></li>
   </ul>
 </nav>
     </div>
@@ -642,8 +640,9 @@ fastp v0.23.2, time used: 22 seconds</code></pre>
 <span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">--html</span> resultados/00_datos_limpios/qc/fastp/SRR18335438.report.fastp.html <span class="dt">\</span></span>
 <span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">--json</span> resultados/00_datos_limpios/qc/fastp/SRR18335438.report.fastp.json</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="verificación-de-calidad-después-de-la-limpieza" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="verificación-de-calidad-después-de-la-limpieza"><span class="header-section-number">3.3.1</span> Verificación de calidad después de la limpieza</h3>
+</section>
+<section id="verificación-de-calidad-después-de-la-limpieza" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="verificación-de-calidad-después-de-la-limpieza"><span class="header-section-number">3.4</span> Verificación de calidad después de la limpieza</h2>
 <p>Finalmente podemos usar FastQC y MultiQC para revisar la calidad de las muestras después de la limpieza:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar reportes con FastQC</span></span>
@@ -674,9 +673,8 @@ Consejo
 <p><img src="assets/images/mqc_fastqc_per_base_sequence_quality_plot_1_after_filter.png" id="fig-per-base-qual-after" class="img-fluid"></p>
 <p>Finalmente las muestras están listas para ser ensambladas en sus correspondientes genomas.</p>
 </section>
-</section>
-<section id="referencias" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="referencias"><span class="header-section-number">3.4</span> Referencias</h2>
+<section id="referencias" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="referencias"><span class="header-section-number">3.5</span> Referencias</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
