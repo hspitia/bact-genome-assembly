@@ -203,7 +203,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#estructura-de-directorios" id="toc-estructura-de-directorios" class="nav-link active" data-scroll-target="#estructura-de-directorios"><span class="toc-section-number">1.1</span>  Estructura de directorios</a></li>
   <li><a href="#ambiente-conda-e-instalación-de-programas" id="toc-ambiente-conda-e-instalación-de-programas" class="nav-link" data-scroll-target="#ambiente-conda-e-instalación-de-programas"><span class="toc-section-number">1.2</span>  Ambiente Conda e instalación de programas</a>
   <ul class="collapse">
-  <li><a href="#instalación-conda-mamba-forge" id="toc-instalación-conda-mamba-forge" class="nav-link" data-scroll-target="#instalación-conda-mamba-forge"><span class="toc-section-number">1.2.1</span>  Instalación conda (mamba forge)</a></li>
+  <li><a href="#instalación-conda-mambaforge" id="toc-instalación-conda-mambaforge" class="nav-link" data-scroll-target="#instalación-conda-mambaforge"><span class="toc-section-number">1.2.1</span>  Instalación Conda: mambaforge</a></li>
   <li><a href="#creación-del-ambiente-conda" id="toc-creación-del-ambiente-conda" class="nav-link" data-scroll-target="#creación-del-ambiente-conda"><span class="toc-section-number">1.2.2</span>  Creación del ambiente Conda</a></li>
   <li><a href="#instalación-de-paquetes" id="toc-instalación-de-paquetes" class="nav-link" data-scroll-target="#instalación-de-paquetes"><span class="toc-section-number">1.2.3</span>  Instalación de paquetes</a></li>
   </ul></li>
@@ -285,10 +285,10 @@ Importante
 </section>
 <section id="ambiente-conda-e-instalación-de-programas" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="ambiente-conda-e-instalación-de-programas"><span class="header-section-number">1.2</span> Ambiente Conda e instalación de programas</h2>
-<p>Una manera eficiente y rápida para instalar todos los programas necesarios para el ensamblaje y anotación de los genomas, consiste en usar Conda<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, un software de libre distribución para administrar ambientes de software, e instalación de programas.</p>
-<section id="instalación-conda-mamba-forge" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="instalación-conda-mamba-forge"><span class="header-section-number">1.2.1</span> Instalación conda (mamba forge)</h3>
-<p>Instalaremos una implementación de Conda más rápida y eficiente llamada <strong>mamba</strong>. Además, esta implementación (miniforge) viene configurada para instalar programas desde una fuente no comercial.</p>
+<p>Una manera eficiente y rápida para instalar todos los programas necesarios para el ensamblaje y anotación de los genomas, consiste en usar Conda<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, un software de libre distribución para administrar ambientes de software e instalación de programas.</p>
+<section id="instalación-conda-mambaforge" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="instalación-conda-mambaforge"><span class="header-section-number">1.2.1</span> Instalación Conda: mambaforge</h3>
+<p>Instalaremos una implementación liviana de Conda de la comunidad conda-forge<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> llamada miniforge<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, que además viene con el gestor de paquetes <code>mamba</code>, el cual es más rápido y eficiente que <code>conda</code>.</p>
 <p>Primero, descarguemos el instalador:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -310,13 +310,14 @@ Nota
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionar permiso de ejecución</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x Mambaforge-Linux-x86_64.sh</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejecutar el instalador</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./Mambaforge-Linux-x86_64.sh</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejecutar el instalador</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./Mambaforge-Linux-x86_64.sh</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Verá un mensaje de los términos de la licencia como este:</p>
+<p>Al ejecutar el anterior comando, verá un mensaje de los términos de la licencia como este:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Welcome to Miniforge-pypy3 22.11.1-4
+<pre><code>Welcome to Mambaforge 22.11.1-4
 
 In order to continue the installation process, please review the license
 agreement.
@@ -434,7 +435,7 @@ Importante
 </section>
 <section id="instalación-de-paquetes" class="level3" data-number="1.2.3">
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="instalación-de-paquetes"><span class="header-section-number">1.2.3</span> Instalación de paquetes</h3>
-<p>Ahora instalaremos los paquetes requeridos. Primero se activa el ambiente:</p>
+<p>Ahora instalaremos los paquetes requeridos. Primero active el ambiente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate ensam</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -452,7 +453,7 @@ Nota
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">ensam</span><span class="kw">)</span> <span class="ex">hector@Ubuntu:~$</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Ahora se instalan los paquetes:</p>
+<p>Ahora instale los paquetes ejecutando el siguiente comando:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-c</span> bioconda csvtk fastp fastqc java-jdk multiqc pigz prokka <span class="dt">\</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  quast spades sra-tools wget</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -505,6 +506,8 @@ done</code></pre>
 <hr>
 <ol>
 <li id="fn1"><p><a href="https://docs.conda.io/en/latest/">Documentación de Conda (en inglés)</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Conda-forge: <a href="https://conda-forge.org/" class="uri">https://conda-forge.org/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Miniforge en GitHub: <a href="https://github.com/conda-forge/miniforge" class="uri">https://github.com/conda-forge/miniforge</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -655,6 +658,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Ensamblaje y Anotación de Genomas Bacterianos, escrito por <a href="https://www.linkedin.com/in/hespitianavarro/">Héctor Fabio Espitia-Navarro</a></div>   
+      <div class="nav-footer-center">
+        <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.udenar.edu.co/">Universidad de Nariño</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008168">Grupo de Investigación Salud Pública</a>
+  </li>  
+</ul>
+      </div>
+    <div class="nav-footer-right">Manual creado con <a href="https://quarto.org/">Quarto</a></div>
+  </div>
+</footer>
 
 
 

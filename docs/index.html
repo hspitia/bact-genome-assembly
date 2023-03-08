@@ -202,7 +202,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#bienvenid" id="toc-bienvenid" class="nav-link active" data-scroll-target="#bienvenid">Bienvenid@</a>
   <ul class="collapse">
-  <li><a href="#por-qué-leer-este-manual" id="toc-por-qué-leer-este-manual" class="nav-link" data-scroll-target="#por-qué-leer-este-manual">Por qué leer este manual</a></li>
   <li><a href="#convenciones" id="toc-convenciones" class="nav-link" data-scroll-target="#convenciones">Convenciones</a>
   <ul class="collapse">
   <li><a href="#bloques-especiales" id="toc-bloques-especiales" class="nav-link" data-scroll-target="#bloques-especiales">Bloques especiales</a></li>
@@ -211,7 +210,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#sesión-r" id="toc-sesión-r" class="nav-link" data-scroll-target="#sesión-r">Sesión R</a></li>
   </ul></li>
-  <li><a href="#estructura-del-manual" id="toc-estructura-del-manual" class="nav-link" data-scroll-target="#estructura-del-manual">Estructura del manual</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -251,9 +249,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="bienvenid" class="level1 unnumbered">
 <h1 class="unnumbered">Bienvenid@</h1>
 <p>Esta es una guía de Bioinformática para ensamblar y anotar genomas bacterianos a partir de muestras de secuenciación de segunda generación (<em>Next Generation Sequencing, NGS</em>)</p>
-<section id="por-qué-leer-este-manual" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="por-qué-leer-este-manual">Por qué leer este manual</h2>
-</section>
 <section id="convenciones" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="convenciones">Convenciones</h2>
 <p>El código fuente, nombres de archivos, y los comandos y su salida, están formateados en fuente monoespaciada. Por ejemplo, <code>ls</code>, <code>/ruta/al/archivo.txt</code> o el siguiente comando y su salida:</p>
@@ -261,13 +256,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> /home</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 4
-drwxr-xr-x 54 hector hector 4096 mar  6 22:19 hector</code></pre>
+drwxr-xr-x 54 hector hector 4096 mar  7 16:27 hector</code></pre>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># eval: false</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ensamblaje/<span class="dt">{datos</span><span class="op">,</span><span class="dt">resultados</span><span class="op">,</span><span class="dt">scripts}</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ensamblaje/resultados/<span class="dt">{00_datos_limpios</span><span class="op">,</span><span class="dt">01_ensamblaje</span><span class="op">,</span><span class="dt">02_ensamblaje_qc</span><span class="op">,</span><span class="dt">03_anotacion}</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Las palabras en idiomas diferentes al español aparecen en cursiva, p.&nbsp;ej. <em>kernel</em>, o <em>dash</em>.</p>
 <section id="bloques-especiales" class="level3 unnumbered">
@@ -342,11 +332,11 @@ Advertencia
 </section>
 <section id="software-utilizado" class="level2">
 <h2 class="anchored" data-anchor-id="software-utilizado">Software utilizado</h2>
-<p>Este libro se creó usando el sistema Quarto con el editor RStudio. Para saber más acerca de libros Quarto visite <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
+<p>Esta uía se creó usando el sistema Quarto con el editor RStudio. Para saber más acerca de creación de libros con Quarto visite <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
 <section id="sesión-r" class="level3">
 <h3 class="anchored" data-anchor-id="sesión-r">Sesión R</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>xfun<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>xfun<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.2.2 Patched (2022-11-10 r83330)
 Platform: x86_64-pc-linux-gnu (64-bit)
@@ -373,25 +363,9 @@ Package version:
   xfun_0.36         yaml_2.3.6       </code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="estructura-del-manual" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="estructura-del-manual">Estructura del manual</h2>
-<p>Contenido tentativo (puede cambiar orden y/o contenido)</p>
-<ul>
-<li>Preparación del entorno de trabajo
-<ul>
-<li>Estructura de directorios</li>
-<li>Ambiente conda e instalación de programas</li>
-</ul></li>
-<li>Descarga de datos</li>
-<li>Control de calidad y limpieza de datos</li>
-<li>Ensamblaje de genomas con SPAdes</li>
-<li>Control de calidad del ensamblaje</li>
-<li>Anotación funcional con PROKKA</li>
-</ul>
 
 
+</section>
 </section>
 </section>
 
@@ -539,6 +513,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Ensamblaje y Anotación de Genomas Bacterianos, escrito por <a href="https://www.linkedin.com/in/hespitianavarro/">Héctor Fabio Espitia-Navarro</a></div>   
+      <div class="nav-footer-center">
+        <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.udenar.edu.co/">Universidad de Nariño</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008168">Grupo de Investigación Salud Pública</a>
+  </li>  
+</ul>
+      </div>
+    <div class="nav-footer-right">Manual creado con <a href="https://quarto.org/">Quarto</a></div>
+  </div>
+</footer>
 
 
 

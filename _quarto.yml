@@ -19,7 +19,24 @@ book:
     # - references.qmd
   appendices:
     - a-fastqc.qmd
- 
+  page-footer:
+    left: |
+      Ensamblaje y Anotación de Genomas Bacterianos, por <a href="https://www.linkedin.com/in/hespitianavarro/">Héctor Fabio Espitia-Navarro</a>
+    center:
+      - text: "Universidad de Nariño"
+        href: "https://www.udenar.edu.co/"
+      - text: "Grupo de Investigación Salud Pública"
+        href: "https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008168"
+    right: |
+        Manual creado con <a href="https://quarto.org/">Quarto</a>
+
+      # - text: "About"
+      #   href: setup.qmd
+      # - text: "License"
+      #   href: data.qmd
+      # - text: "Trademark"
+      #   href: trademark.qmd
+
 bibliography: 
   - references.bib
 
@@ -75,7 +92,7 @@ format:
     code-block-bg: "#e9ecef"
     colorlinks: true
     fig-align: center
-    fontsize: 10pt
+    fontsize: 12pt
     theme: 
       - cosmo
       - assets/css/custom.scss

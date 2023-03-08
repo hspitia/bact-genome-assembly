@@ -1,5 +1,21 @@
 /*-- scss:defaults --*/
+// $h2-font-size:          1.6rem !default;
+$headings-font-weight:  600 !default;
+// $link-color: #00923f;
+
 /*-- scss:rules --*/
+
+.sidebar-title > a {
+  font-size: inherit;
+  text-decoration: none;
+  //color: $link-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Abel", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+
 a {
     text-decoration: none;
 }
@@ -12,8 +28,12 @@ a {
   background-color: #e9ecef;
 , .cell-output-stdout*/
 .cell-output {
+  /*
   background-color: #faf9f8;
   border: 1px solid #faf9f8;
+  */
+  background-color: #f2efed;
+  border: 1px solid #f2efed;
   border-radius: .25rem;
   padding: .4em;
   margin-bottom: 1em;

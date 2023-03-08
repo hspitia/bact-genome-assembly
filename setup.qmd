@@ -20,8 +20,6 @@ mkdir -p ensamblaje/resultados/{00_datos_limpios,01_ensamblaje,02_ensamblaje_qc,
 mkdir -p ensamblaje/resultados/00_datos_limpios/qc/{fastp,fastqc}
 ```
 
-
-
 ```{bash}
 #| eval: false
 mkdir -p ensamblaje/{datos,resultados,scripts}
@@ -50,13 +48,17 @@ tree -L 4 -n ensamblaje | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'
 
 ## Ambiente Conda e instalación de programas
 
-Una manera eficiente y rápida para instalar todos los programas necesarios para el ensamblaje y anotación de los genomas, consiste en usar Conda[^setup-1], un software de libre distribución para administrar ambientes de software, e instalación de programas.
+Una manera eficiente y rápida para instalar todos los programas necesarios para el ensamblaje y anotación de los genomas, consiste en usar Conda[^setup-1], un software de libre distribución para administrar ambientes de software e instalación de programas.
 
 [^setup-1]: [Documentación de Conda (en inglés)](https://docs.conda.io/en/latest/)
 
-### Instalación conda (mamba forge)
+### Instalación Conda: mambaforge
 
-Instalaremos una implementación de Conda más rápida y eficiente llamada **mamba**. Además, esta implementación (miniforge) viene configurada para instalar programas desde una fuente no comercial.
+Instalaremos una implementación liviana de Conda de la comunidad conda-forge[^setup-2] llamada miniforge[^setup-3], que además viene con el gestor de paquetes `mamba`, el cual es más rápido y eficiente que `conda`.
+
+[^setup-2]: Conda-forge: <https://conda-forge.org/>
+
+[^setup-3]: Miniforge en GitHub: <https://github.com/conda-forge/miniforge>.
 
 Primero, descarguemos el instalador:
 
@@ -75,15 +77,16 @@ Ahora iniciemos el instalador:
 #| eval: false
 # Adicionar permiso de ejecución
 chmod +x Mambaforge-Linux-x86_64.sh
+
 # Ejecutar el instalador
 ./Mambaforge-Linux-x86_64.sh
 ```
 
-Verá un mensaje de los términos de la licencia como este:
+Al ejecutar el anterior comando, verá un mensaje de los términos de la licencia como este:
 
 ```{bash}
 #| echo: false
-echo "Welcome to Miniforge-pypy3 22.11.1-4
+echo "Welcome to Mambaforge 22.11.1-4
 
 In order to continue the installation process, please review the license
 agreement.
@@ -215,7 +218,7 @@ mamba deactivate
 
 ### Instalación de paquetes
 
-Ahora instalaremos los paquetes requeridos. Primero se activa el ambiente:
+Ahora instalaremos los paquetes requeridos. Primero active el ambiente:
 
 ```{bash}
 #| eval: false
@@ -230,7 +233,7 @@ Cuando se activa correctamente, podrá ver el nombre del ambiente recién activa
 ```
 :::
 
-Ahora se instalan los paquetes:
+Ahora instale los paquetes ejecutando el siguiente comando:
 
 ```{bash}
 #| eval: false
@@ -282,7 +285,3 @@ done"
 ```
 
 Ahora todo el software requerido para el análisis de los datos está instalado.
-
-
-
-

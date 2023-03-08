@@ -5,7 +5,7 @@
 #| eval: true
 ```
 
-Una vez descargados los datos, es siguiente paso consiste en hacer control de calidad y limpieza de los datos. En este paso primero se revisa la calidad de los datos, y luego se editan o eliminan las lecturas (*reads*) que no tienen la calidad necesaria para conseguir un buen ensamblaje.
+Una vez descargados los datos, el siguiente paso consiste en hacer control de calidad y limpieza de los datos. En este paso primero se revisa la calidad de los datos, y luego se editan o eliminan las lecturas (*reads*) que no tienen la calidad necesaria para conseguir un buen ensamblaje.
 
 ::: callout-important
 Es importante comprender la calidad de los datos de secuenciación. Puede aprender sobre el puntaje Phred y cómo se codifica en el formato FASTQ en los artículos de Wikipedia [*"Nivel de calidad Phred"*](https://es.wikipedia.org/wiki/Nivel_de_calidad_Phred) y [*"FASTQ format"*](https://en.wikipedia.org/wiki/FASTQ_format), respectivamente.
