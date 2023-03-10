@@ -14,7 +14,7 @@ Es importante comprender la calidad de los datos de secuenciación. Puede aprend
 ## Software requerido
 
 | Software | Versión | Descripción                                                                                                             | Ref.                                                                    |
-|------------------|------------------|-------------------|------------------|
+|----------|---------|-------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | FastQC   | 0.12.1  | Herramienta para el control de calidad en datos de secuenciación de alto rendimiento                                    | [Sitio Web](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) |
 | MultiQC  | 1.14    | Herramienta para unificar y resumir múltiples reportes generados por FastQC y muchos otros programas de bioinformática. | @ewels2016; [sitio Web](https://multiqc.info/)                          |
 | fastp    | 0.23.2  | Herramienta para el pre-procesamiento rápido de archivos Fastq.                                                         | @chen2018; [repositorio GitHub](https://github.com/OpenGene/fastp)      |
@@ -85,7 +85,7 @@ El archivo comprimido `.zip` contiene una copia del reporte `.html`, gráficos, 
 Analicemos uno de los reportes de calidad de FastQC. Abra el archivo `SRR18335437_1_fastqc.html`. El reporte contiene diferentes secciones, llamadas módulos, que corresponden a diferentes evaluaciones de calidad que la herramienta hace sobre los datos (@fig-fastqc-report). Puede consultar información detallada (en inglés) a cerca de FastQC y sus módulos en el @sec-a-fastqc-help. Por cada módulo, el reporte presenta un ícono con tres posibles estados de acuerdo al resultado de la evaluación (@tbl-fastqc-results).
 
 |                Símbolo                | Descripción                                                                                                                                                                                                                                                                                                                                         |
-|:----------------:|------------------------------------------------------|
+|:-------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  ![](assets/images/fastqc-tick.png)   | Pasó. La muestra pasó la evaluación de calidad en esta categoría (módulo). No hay problemas de calidad.                                                                                                                                                                                                                                             |
 | ![](assets/images/fastqc-warning.png) | Advertencia. La muestra tiene un posible problema calidad. El usuario debería revisar la muestra y tomar las medidas necesarias para evitar el error de ser posible. Por la naturaleza de la secuenciación de ADN, es normal que se presenten advertencias en algunos módulos en las muestras sin que signifique que haya un problema real o grave. |
 |  ![](assets/images/fastqc-error.png)  | Falló. La muestra falló la evaluación de calidad en este módulo. El usuario debería limpiar los datos para corregir el error.                                                                                                                                                                                                                       |
@@ -126,7 +126,7 @@ Ahora MultiQC ha generado dos elementos, el archivo `multiqc_report.html` y un d
 
 ![Captura de pantalla del reporte de calidad unificado generado con MultiQC.](assets/images/multiqc-report.png){#fig-multiqc width="90%"}
 
-::: {.callout-tip}
+::: callout-tip
 Abra el reporte [`ensamblaje/datos/qc/multiqc_report.html`](ensamblaje/datos/qc/multiqc_report.html) para revisar toda la información de calidad evaluada por FastQC.
 :::
 
@@ -330,7 +330,7 @@ Finalmente podemos usar FastQC y MultiQC para revisar la calidad de las muestras
 ```{bash}
 #| eval: false
 # Generar reportes con FastQC
-fastqc -o resultados/00_datos_limpios/qc/fastqc *.clean.fastq.gz
+fastqc -o resultados/00_datos_limpios/qc/fastqc resultados/00_datos_limpios/*.clean.fastq.gz
 
 # Generar reporte unificado con MultiQC
 multiqc \
@@ -343,14 +343,14 @@ multiqc \
 
 Note que en el anterior comando de MultiQC se pasó no solo el directorio de reportes FastQC, sino también el directorio con los reportes de fastp. La aplicación se encarga de generar un solo documento `.html` con dos secciones, una para fastp y otra para FastQC.
 
-::: {.callout-tip}
+::: callout-tip
 Explore el reporte [`resultados/00_datos_limpios/qc/multiqc_report.html`](ensamblaje/resultados/00_datos_limpios/qc/multiqc_report.html) para ver las diferentes estadísticas de calidad después de haber aplicado los filtros a las muestras.
 :::
 
-Echemos un vistazo al gráfico de calidad de secuenciación por base generado sobre los datos limpios (@fig-per-base-qual). Podemos ver que las dos muestras que te tenían baja calidad hacia el final de las secuencias, ahora aparecen en color naranja, con una calidad $Q > 20$. 
+Echemos un vistazo al gráfico de calidad de secuenciación por base generado sobre los datos limpios (@fig-per-base-qual). Podemos ver que las dos muestras que te tenían baja calidad hacia el final de las secuencias, ahora aparecen en color naranja, con una calidad $Q > 20$.
 
 ![](assets/images/mqc_fastqc_per_base_sequence_quality_plot_1_after_filter.png){#fig-per-base-qual-after}
 
-Finalmente las muestras están listas para ser ensambladas en sus correspondientes genomas.
+Finalmente las muestras están listas para ser ensambladas.
 
 ## Referencias

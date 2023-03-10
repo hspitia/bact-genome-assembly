@@ -5,7 +5,7 @@
 #| eval: true
 ```
 
-Esta es una guía de Bioinformática para ensamblar y anotar genomas bacterianos a partir de muestras de secuenciación de segunda generación (*Next Generation Sequencing, NGS*)
+Esta es una guía de Bioinformática para ensamblar y anotar genomas bacterianos a partir de muestras de aislamientos secuenciados con tecnologías de secuenciación de segunda generación (*Next Generation Sequencing, NGS*).
 
 ## Convenciones {.unnumbered}
 

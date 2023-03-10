@@ -25,17 +25,49 @@ mamba install -c bioconda csvtk fastp fastqc java-jdk multiqc pigz prokka \
   
 # Entrar al directorio para datos en el directorio del proyecto
 cd ensamblaje/datos
-
 # Descargar las muestras
-
 for i in SRR22388518 SRR22388519 SRR18335437 SRR18335438; do fasterq-dump -S -p -e 8 $i; done
 
-fasterq-dump -S SRR22388518
-
-fasterq-dump -S SRR22388519
-
-fasterq-dump -S SRR18335437
-
-fasterq-dump -S SRR18335438
+# fasterq-dump -S SRR22388518
+# fasterq-dump -S SRR22388519
+# fasterq-dump -S SRR18335437
+# fasterq-dump -S SRR18335438
 
 gzip *.fastq
+
+# QC
+fastqc -o dtos/qc/fastqc datos/*.fastq.gz
+
+multiqc --filename multiqc_report.html --outdir qc qc/fastqc
+
+for i in SRR18335437 SRR18335438 SRR22388518 SRR22388519; do
+    fastp \
+    --verbose \
+    --thread 4 \
+    --detect_adapter_for_pe \
+    --cut_tail \
+    --cut_mean_quality 20 \
+    --average_qual 20 \
+    --report_title "Reporte fastp: $i" \
+    --in1 datos/${i}_1.fastq.gz \
+    --in2 datos/${i}_2.fastq.gz \
+    --out1 resultados/00_datos_limpios/${i}_1.clean.fastq.gz \
+    --out2 resultados/00_datos_limpios/${i}_2.clean.fastq.gz \
+    --unpaired1 resultados/00_datos_limpios/${i}_1.unpaired.fastq.gz \
+    --unpaired2 resultados/00_datos_limpios/${i}_2.unpaired.fastq.gz \
+    --html resultados/00_datos_limpios/qc/fastp/${i}.report.fastp.html \
+    --json resultados/00_datos_limpios/qc/fastp/${i}.report.fastp.json
+done
+
+# Generar reportes con FastQC
+fastqc -o resultados/00_datos_limpios/qc/fastqc resultados/00_datos_limpios/*.clean.fastq.gz
+
+# Generar reporte unificado con MultiQC
+multiqc \
+  --export \
+  --filename multiqc_report.html \
+  --outdir resultados/00_datos_limpios/qc \
+  resultados/00_datos_limpios/qc/fastp \
+  resultados/00_datos_limpios/qc/fastqc
+
+
