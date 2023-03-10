@@ -111,9 +111,8 @@ format:
           \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
           \DefineVerbatimEnvironment{verbatim}{Verbatim}{breaklines,breaknonspaceingroup,breakanywhere,commandchars=\\\{\}}
           % \fvset{breaklines=true, breakanywhere=true, breaknonspaceingroup=true}
-          \lstset{breaklines=true}
+          % \lstset{breaklines=true}
     keep-tex: true
-    pandoc_args: --listings
     pagestyle: headings
     # LINK COLORS
     citecolor: BrickRed
