@@ -70,4 +70,14 @@ multiqc \
   resultados/00_datos_limpios/qc/fastp \
   resultados/00_datos_limpios/qc/fastqc
 
+# Ensamblaje
+
+for i in SRR18335437 SRR18335438 SRR22388518 SRR22388519; do
+  spades.py \
+    --isolate \
+    -1 resultados/00_datos_limpios/${i}_1.clean.fastq.gz \
+    -2 resultados/00_datos_limpios/${i}_2.clean.fastq.gz \
+    -o resultados/01_ensamblaje/${i} \
+    -t 4
+done
 

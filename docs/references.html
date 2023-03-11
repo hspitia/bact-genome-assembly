@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ensamblaje y Anotación de Genomas Bacterianos - 2&nbsp; Obtención de datos</title>
+<title>Ensamblaje y Anotación de Genomas Bacterianos - Bibliografía</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -83,8 +49,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./data_qual.html" rel="next">
-<link href="./setup.html" rel="prev">
+<link href="./a-fastqc.html" rel="next">
+<link href="./assembly.html" rel="prev">
 <link href="./assets/images/book.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -129,7 +95,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Obtención de datos</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">Bibliografía</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -171,7 +137,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link active">
+  <a href="./data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Obtención de datos</span></span></a>
   </div>
 </li>
@@ -189,7 +155,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Bibliografía</span></a>
   </div>
 </li>
@@ -216,22 +182,14 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
-   
-  <ul>
-  <li><a href="#software-requerido" id="toc-software-requerido" class="nav-link active" data-scroll-target="#software-requerido"><span class="header-section-number">2.1</span> Software requerido</a></li>
-  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos"><span class="header-section-number">2.2</span> Datos</a></li>
-  <li><a href="#descarga" id="toc-descarga" class="nav-link" data-scroll-target="#descarga"><span class="header-section-number">2.3</span> Descarga</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Obtención de datos</span></h1>
+<h1 class="title">Bibliografía</h1>
 </div>
 
 
@@ -246,162 +204,38 @@ div.csl-indent {
 
 </header>
 
-<section id="software-requerido" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="software-requerido"><span class="header-section-number">2.1</span> Software requerido</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Software</th>
-<th>Versión</th>
-<th>Descripción</th>
-<th>Ref.</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>SRA Tools</td>
-<td>3.0.3</td>
-<td>Colección de herramientas para descargar datos desde la base de datos SRA<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (del inglés <em>Sequence Read Archive;</em> <span class="citation" data-cites="katz2022">Katz et&nbsp;al. (<a href="references.html#ref-katz2022" role="doc-biblioref">2022</a>)</span>) del NCBI (del inglés <em>National Center for Biotechnology Information</em>)</td>
-<td><a href="https://github.com/ncbi/sra-tools">Repositorio GitHub</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="datos" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="datos"><span class="header-section-number">2.2</span> Datos</h2>
-<p>Descargaremos cuatro muestras de secuenciación de genoma completo o WGS (del inglés <em>Whole Genome Sequencing</em>) del organismo <em>Helicobacter</em> <em>pylori</em>, para ser ensambladas. Para descargar estas muestras necesitaremos los identificadores (número de acceso o <em>accession number</em> en inglés) en la base de datos SRA:</p>
-<ol type="1">
-<li><p>SRR22388518</p></li>
-<li><p>SRR22388519</p></li>
-<li><p>SRR18335437</p></li>
-<li><p>SRR18335438</p></li>
-</ol>
-</section>
-<section id="descarga" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="descarga"><span class="header-section-number">2.3</span> Descarga</h2>
-<p>Para empezar a descargar las muestras, abra una terminal y ejecute las órdenes que se dan a continuación.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-chen2018" class="csl-entry" role="listitem">
+Chen, Shifu, Yanqing Zhou, Yaru Chen, and Jia Gu. 2018. <span>“Fastp: An
+Ultra-Fast All-in-One FASTQ Preprocessor.”</span>
+<em>Bioinformatics</em> 34 (17): i884–90. <a href="https://doi.org/10.1093/bioinformatics/bty560">https://doi.org/10.1093/bioinformatics/bty560</a>.
 </div>
-<div class="callout-title-container flex-fill">
-Advertencia
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Siempre que vea comentarios (líneas empezando con <code>#</code>) en las cajas de comandos, no los digite en la terminal. Estos comentarios solo proveen información adicional a cerca de cada comando.</p>
-</div>
-</div>
-<p>La descarga de cada muestra toma aproximadamente cinco minutos (o más), dependiendo de la velocidad de su conexión a Internet. No se preocupe si no ve ningún avance aparente después de ejecutar el comando de descarga (<code>fasterq-dump</code>).</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Si quiere ver el progreso de cada descarga, use la opción <code>-p</code> (o <code>--progress</code>) con <code>fasterq-dump</code></li>
-<li>Explore otras opciones útiles de <code>fasterq-dump</code> consultando la ayuda: <code>fasterq-dump --help</code></li>
-</ul>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrar al directorio para datos en el directorio del proyecto</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ensamblaje/datos</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Descargar las muestras</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fasterq-dump</span> <span class="at">-S</span> SRR22388518</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>spots read      : 870,940
-reads read      : 1,741,880
-reads written   : 1,741,880</code></pre>
-</div>
-</div>
-<p>Finalizada la descarga <code>fasterq-dump</code> imprime en pantalla el resumen de las secuencias descargadas y escritas en archivos (salida anterior) .</p>
-<p>Ahora verifique los archivos descargados:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>total 962M
--rw-rw-r-- 1 hector hector 481M mar  2 14:40 SRR22388518_1.fastq
--rw-rw-r-- 1 hector hector 481M mar  2 14:40 SRR22388518_2.fastq</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-<p>Como puede observar, hay dos archivos descargados con la extensión <code>.fastq</code>. Veamos la estructura de nombre de los archivos descargados:</p>
-<pre><code>   SRR22388518       _            1                .         fastq
-       |                          |                            |
-(accession number)      (conjunto de secuencias)      (extensión de archivo)</code></pre>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Hay dos archivos puesto que la muestra se secuenció con tecnología Illumina <em>paired-end</em>, en la cual resultan dos <em>reads</em> (secuencias), <em>forward</em> (<code>_1</code>) y <em>reverse</em> (<code>_2</code>), de secuenciar los extremos de una molécula de ADN. En la <a href="#fig-paired-end">Figura&nbsp;<span>2.1</span></a> se detalla la ubicación relativa de los dos <em>reads</em> respecto del fragmento de ADN secuenciado. En el archivo <code>_1</code> están guardas todas las secuencias <em>forward</em> y en el archivo <code>_2</code>, todas las secuencias <em>reverse</em>.</p>
-</div>
-</div>
-<div id="fig-paired-end" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="assets/images/paired-end_schematic.png" class="img-fluid figure-img" style="width:6in"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;2.1. Representación esquemática de la secuenciación *paired-end*.</figcaption><p></p>
-</figure>
-</div>
-<p>El formato FASTQ<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="citation" data-cites="cock2010">(<a href="references.html#ref-cock2010" role="doc-biblioref">Cock et&nbsp;al. 2010</a>)</span> es el estándar <em>de facto</em> para datos de secuenciación de segunda generación y es usado, entre otras, por la tecnología Illumina. Este formato almacena tanto las secuencias de ADN como la calidad de cada base secuenciada.</p>
-<p>Ahora descarguemos el resto de las muestras:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fasterq-dump</span> <span class="at">-S</span> SRR22388519</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fasterq-dump</span> <span class="at">-S</span> SRR18335437</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fasterq-dump</span> <span class="at">-S</span> SRR18335438</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Finalmente, aunque no es necesario, es una buena práctica comprimir las archivos descargados para que ocupen menos espacio en disco:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="pp">*</span>.fastq</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Como verá, ahora los archivos están comprimidos por lo que tienen la extensión <code>.gz</code> (<code>.fastq.gz</code>):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>SRR18335437_1.fastq.gz  SRR18335438_2.fastq.gz  SRR22388519_1.fastq.gz
-SRR18335437_2.fastq.gz  SRR22388518_1.fastq.gz  SRR22388519_2.fastq.gz
-SRR18335438_1.fastq.gz  SRR22388518_2.fastq.gz</code></pre>
-</div>
-</div>
-
-
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-cock2010" class="csl-entry" role="listitem">
-Cock, Peter J. A., Christopher J. Fields, Naohisa Goto, Michael L. Heuer, y Peter M. Rice. 2010. <span>«The Sanger FASTQ file format for sequences with quality scores, and the Solexa/Illumina FASTQ variants»</span>. <em>Nucleic Acids Research</em> 38 (6): 1767-71. <a href="https://doi.org/10.1093/nar/gkp1137">https://doi.org/10.1093/nar/gkp1137</a>.
+Cock, Peter J. A., Christopher J. Fields, Naohisa Goto, Michael L.
+Heuer, and Peter M. Rice. 2010. <span>“The Sanger FASTQ File Format for
+Sequences with Quality Scores, and the Solexa/Illumina FASTQ
+Variants.”</span> <em>Nucleic Acids Research</em> 38 (6): 1767–71. <a href="https://doi.org/10.1093/nar/gkp1137">https://doi.org/10.1093/nar/gkp1137</a>.
+</div>
+<div id="ref-ewels2016" class="csl-entry" role="listitem">
+Ewels, Philip, Måns Magnusson, Sverker Lundin, and Max Käller. 2016.
+<span>“MultiQC: Summarize Analysis Results for Multiple Tools and
+Samples in a Single Report.”</span> <em>Bioinformatics</em> 32 (19):
+3047–48. <a href="https://doi.org/10.1093/bioinformatics/btw354">https://doi.org/10.1093/bioinformatics/btw354</a>.
 </div>
 <div id="ref-katz2022" class="csl-entry" role="listitem">
-Katz, Kenneth, Oleg Shutov, Richard Lapoint, Michael Kimelman, J&nbsp;Rodney Brister, y Christopher O’Sullivan. 2022. <span>«The Sequence Read Archive: a decade more of explosive growth»</span>. <em>Nucleic Acids Research</em> 50 (D1): D387-90. <a href="https://doi.org/10.1093/nar/gkab1053">https://doi.org/10.1093/nar/gkab1053</a>.
+Katz, Kenneth, Oleg Shutov, Richard Lapoint, Michael Kimelman, J&nbsp;Rodney
+Brister, and Christopher O’Sullivan. 2022. <span>“The Sequence Read
+Archive: A Decade More of Explosive Growth.”</span> <em>Nucleic Acids
+Research</em> 50 (D1): D387–90. <a href="https://doi.org/10.1093/nar/gkab1053">https://doi.org/10.1093/nar/gkab1053</a>.
+</div>
+<div id="ref-prjibelski2020" class="csl-entry" role="listitem">
+Prjibelski, Andrey, Dmitry Antipov, Dmitry Meleshko, Alla Lapidus, and
+Anton Korobeynikov. 2020. <span>“Using SPAdes De Novo Assembler.”</span>
+<em>Current Protocols in Bioinformatics</em> 70 (1): e102. <a href="https://doi.org/10.1002/cpbi.102">https://doi.org/10.1002/cpbi.102</a>.
 </div>
 </div>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p><a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><a href="https://en.wikipedia.org/wiki/FASTQ_format">Wikipedia: FASTQ Format</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -754,13 +588,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./setup.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preparación del entorno de trabajo</span></span>
+      <a href="./assembly.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ensamblaje</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./data_qual.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control de calidad y limpieza de datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./a-fastqc.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">FastQC help</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

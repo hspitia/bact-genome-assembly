@@ -19,7 +19,7 @@ book:
     # - assembly_qual.qmd
     # - annotation.qmd
     # - author.qmd
-    # - references.qmd
+    - references.qmd
   appendices:
     - a-fastqc.qmd
   page-footer:
@@ -67,6 +67,7 @@ language:
   title-block-author-single: "Autor"
 format:
   html:
+    fig-align: center
     # FONTS CONFIG
     # mainfont: "Diverda Sans Com"
     # mainfont: "IowanOldSt BT"
@@ -82,16 +83,24 @@ format:
     # monofont: "Roboto Mono"
     # monofont: "Inconsolata"
     # monofont: "Monaco"
-    code-block-bg: "#e9ecef"
+    # code-block-bg: "#e9ecef"
     # colorlinks: true
-    fig-align: center
     # fontsize: 12pt
     theme: 
-      - cosmo
-      - assets/css/custom.scss
+      light:
+        - cosmo
+        - assets/css/custom_light.scss
+      dark:
+        # - cyborg
+        - slate
+        - assets/css/custom_dark.scss
+        # - superhero
+        # - darkly
   pdf:
     lang: es-ES
     pdf-engine: xelatex
+    listings: true
+    link-citations: true
     number-sections: true
     # For kranktz class
     # documentclass: latex/krantz
@@ -102,16 +111,7 @@ format:
     # documentclass: scrbook
     documentclass: scrreport
     include-in-header:
-      text: |
-          \usepackage{wrapfig}
-          \let\temptt\texttt
-          %\renewcommand{\texttt}[1]{\textcolor[rgb]{0.59,0.33,0.72}{\temptt{#1}}}
-          \renewcommand{\texttt}[1]{\textcolor[rgb]{0.28,0.35,0.67}{\temptt{#1}}}
-          \usepackage{fvextra}
-          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
-          \DefineVerbatimEnvironment{verbatim}{Verbatim}{breaklines,breaknonspaceingroup,breakanywhere,commandchars=\\\{\}}
-          % \fvset{breaklines=true, breakanywhere=true, breaknonspaceingroup=true}
-          % \lstset{breaklines=true}
+      latex/pre.tex
     keep-tex: true
     pagestyle: headings
     # LINK COLORS

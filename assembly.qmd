@@ -10,17 +10,16 @@ Ahora que los datos están depurados, podemos ensamblar las muestras en sus corr
 ## Software requerido
 
 | Software | Versión | Descripción                                                                                                                | Ref.                                                                                                                     |
-|------------------|------------------|-------------------|------------------|
+|-----------|-----------|-----------------------------------|---------------|
 | SPAdes   | 3.15.5  | Conjunto de herramientas para ensamblaje *de novo* de genomas con múltiples flujos de trabajo de ensamblaje especializado. | @prjibelski2020; [Sitio Web](http://cab.spbu.ru/software/spades/); [repositorio GitHub](https://github.com/ablab/spades) |
 
 ## Ensamblaje de genomas
 
-Usaremos el ensamblador *de novo*[^1] SPAdes [@prjibelski2020], el cual fue desarrollado inicialmente para ensamblar secuencias cortas Illumina obtenidas de aislamientos bacterianos y secuenciación de células individuales (*single-cell sequencing*), y que con el tiempo ha sido extendido para usar secuencias de otras tecnologías y ensamblar metagenomas, transcriptomas, y plásmidos.
+Usaremos el ensamblador *de novo*[^assembly-1] SPAdes [@prjibelski2020], el cual fue desarrollado inicialmente para ensamblar secuencias cortas Illumina obtenidas de aislamientos bacterianos y secuenciación de células individuales (*single-cell sequencing*), y que con el tiempo ha sido extendido para usar secuencias de otras tecnologías y ensamblar metagenomas, transcriptomas, y plásmidos.
 
-[^1]: Wikipedia - De novo assemblers:  [https://en.wikipedia.org/wiki/De_novo_sequence_assemblers](https://en.wikipedia.org/wiki/De_novo_sequence_assemblers)
+[^assembly-1]: Wikipedia - De novo assemblers: <https://en.wikipedia.org/wiki/De_novo_sequence_assemblers>
 
-
-Para ensamblar la muestra  ejecute la siguiente orden:
+Para ensamblar la muestra ejecute la siguiente orden:
 
 ```{bash}
 #| eval: false
@@ -31,7 +30,7 @@ spades.py \
   --isolate \
   -1 resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz \
   -2 resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz \
-  -o resultados/01_ensamblaje/SRR22388519 \
+  -o resultados/01_ensamblaje/SRR22388518 \
   -t 4
 ```
 
@@ -42,7 +41,7 @@ echo "System information:
   Python version: 3.10.6
   OS: Linux-5.15.0-67-generic-x86_64-with-glibc2.31
 
-Output dir: /home/hector/projects/ensamblaje/resultados/01_ensamblaje/SRR22388519
+Output dir: /home/hector/ensamblaje/resultados/01_ensamblaje/SRR22388518
 Mode: ONLY assembling (without read error correction)
 Debug mode is turned OFF
 
@@ -51,8 +50,8 @@ Dataset parameters:
   Reads:
     Library number: 1, library type: paired-end
       orientation: fr
-      left reads: ['/home/hector/projects/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz']
-      right reads: ['/home/hector/projects/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz']
+      left reads: ['/home/hector/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz']
+      right reads: ['/home/hector/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz']
       interlaced reads: not specified
       single reads: not specified
       merged reads: not specified
@@ -63,9 +62,11 @@ Assembly parameters:
   MismatchCorrector will be SKIPPED
   Coverage cutoff is turned OFF
 Other parameters:
-  Dir for temp files: /home/hector/projects/ensamblaje/resultados/01_ensamblaje/SRR22388519/tmp
+  Dir for temp files: /home/hector/ensamblaje/resultados/01_ensamblaje/SRR22388518/tmp
   Threads: 4
   Memory limit (in Gb): 7
+
+======= SPAdes pipeline started. Log can be found here: /home/hector/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log
 
 ...
 
@@ -73,5 +74,3 @@ Other parameters:
 
 "
 ```
-
-

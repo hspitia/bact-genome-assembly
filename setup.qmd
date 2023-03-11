@@ -37,24 +37,24 @@ La estructura final del directorio del directorio del proyecto se puede ver con 
 ```{bash}
 #| eval: false
 #| echo: true
-tree -L 4 ensamblaje
+tree -L 4 --charset HTML ensamblaje
 ```
 
 ```{bash}
 #| echo: false
 echo "ensamblaje
-├── datos
-│   └── qc
-│       └── fastqc
-├── resultados
-│   ├── 00_datos_limpios
-│   │   └── qc
-│   │       ├── fastp
-│   │       └── fastqc
-│   ├── 01_ensamblaje
-│   ├── 02_ensamblaje_qc
-│   └── 03_anotacion
-└── scripts"
+|-- datos
+|   \`-- qc
+|       \`-- fastqc
+|-- resultados
+|   |-- 00_datos_limpios
+|   |   \`-- qc
+|   |       |-- fastp
+|   |       \`-- fastqc
+|   |-- 01_ensamblaje
+|   |-- 02_ensamblaje_qc
+|   \`-- 03_anotacion
+\`-- scripts"
 ```
 
 ````{=html}
