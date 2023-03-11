@@ -145,7 +145,31 @@ div.csl-indent {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Ensamblaje y Anotación de Genomas Bacterianos</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/hspitia/bact-genome-assembly" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
 </div>
     </div>
@@ -224,7 +248,13 @@ div.csl-indent {
   <li><a href="#ensamblaje-de-genomas" id="toc-ensamblaje-de-genomas" class="nav-link" data-scroll-target="#ensamblaje-de-genomas"><span class="header-section-number">4.2</span> Ensamblaje de genomas</a></li>
   </ul>
 </nav>
-    </div>
+    <div class="quarto-margin-footer"><div class="margin-footer-item">
+<div class="margin-logo">
+<div id="margin-cild" class="margin-child">
+<p><a href="https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008168">Grupo de Investigación<br>Salud Pública</a></p>
+</div>
+</div>
+</div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -284,12 +314,14 @@ div.csl-indent {
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>System information:
+<pre><code>Command line: /home/hector/mambaforge/envs/ensam/bin/spades.py  --isolate   -1  /home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz  -2  /home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz  -o  /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518  -t  4   
+
+System information:
   SPAdes version: 3.15.5
   Python version: 3.10.6
   OS: Linux-5.15.0-67-generic-x86_64-with-glibc2.31
 
-Output dir: /home/hector/ensamblaje/resultados/01_ensamblaje/SRR22388518
+Output dir: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518
 Mode: ONLY assembling (without read error correction)
 Debug mode is turned OFF
 
@@ -298,8 +330,8 @@ Dataset parameters:
   Reads:
     Library number: 1, library type: paired-end
       orientation: fr
-      left reads: ['/home/hector/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz']
-      right reads: ['/home/hector/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz']
+      left reads: ['/home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz']
+      right reads: ['/home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz']
       interlaced reads: not specified
       single reads: not specified
       merged reads: not specified
@@ -310,13 +342,29 @@ Assembly parameters:
   MismatchCorrector will be SKIPPED
   Coverage cutoff is turned OFF
 Other parameters:
-  Dir for temp files: /home/hector/ensamblaje/resultados/01_ensamblaje/SRR22388518/tmp
+  Dir for temp files: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/tmp
   Threads: 4
   Memory limit (in Gb): 7
 
-======= SPAdes pipeline started. Log can be found here: /home/hector/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log
 
-...</code></pre>
+======= SPAdes pipeline started. Log can be found here: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log
+
+...
+
+===== Terminate finished. 
+
+ * Assembled contigs are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/contigs.fasta
+ * Assembled scaffolds are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/scaffolds.fasta
+ * Paths in the assembly graph corresponding to the contigs are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/contigs.paths
+ * Paths in the assembly graph corresponding to the scaffolds are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/scaffolds.paths
+ * Assembly graph is in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/assembly_graph.fastg
+ * Assembly graph in GFA format is in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/assembly_graph_with_scaffolds.gfa
+
+======= SPAdes pipeline finished.
+
+SPAdes log can be found here: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log
+
+Thank you for using SPAdes!</code></pre>
 </div>
 </div>
 

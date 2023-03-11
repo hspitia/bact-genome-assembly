@@ -1,0 +1,5 @@
+::: margin-logo
+::: {#margin-cild .margin-child}
+[Grupo de Investigación</br>Salud Pública](https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008168)
+:::
+:::

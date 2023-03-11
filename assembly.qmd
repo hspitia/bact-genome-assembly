@@ -36,12 +36,14 @@ spades.py \
 
 ```{bash}
 #| echo: false
-echo "System information:
+echo "Command line: /home/hector/mambaforge/envs/ensam/bin/spades.py	--isolate	-1	/home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz	-2	/home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz	-o	/home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518	-t	4	
+
+System information:
   SPAdes version: 3.15.5
   Python version: 3.10.6
   OS: Linux-5.15.0-67-generic-x86_64-with-glibc2.31
 
-Output dir: /home/hector/ensamblaje/resultados/01_ensamblaje/SRR22388518
+Output dir: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518
 Mode: ONLY assembling (without read error correction)
 Debug mode is turned OFF
 
@@ -50,8 +52,8 @@ Dataset parameters:
   Reads:
     Library number: 1, library type: paired-end
       orientation: fr
-      left reads: ['/home/hector/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz']
-      right reads: ['/home/hector/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz']
+      left reads: ['/home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz']
+      right reads: ['/home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz']
       interlaced reads: not specified
       single reads: not specified
       merged reads: not specified
@@ -62,15 +64,28 @@ Assembly parameters:
   MismatchCorrector will be SKIPPED
   Coverage cutoff is turned OFF
 Other parameters:
-  Dir for temp files: /home/hector/ensamblaje/resultados/01_ensamblaje/SRR22388518/tmp
+  Dir for temp files: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/tmp
   Threads: 4
   Memory limit (in Gb): 7
 
-======= SPAdes pipeline started. Log can be found here: /home/hector/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log
+
+======= SPAdes pipeline started. Log can be found here: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log
 
 ...
 
+===== Terminate finished. 
 
+ * Assembled contigs are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/contigs.fasta
+ * Assembled scaffolds are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/scaffolds.fasta
+ * Paths in the assembly graph corresponding to the contigs are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/contigs.paths
+ * Paths in the assembly graph corresponding to the scaffolds are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/scaffolds.paths
+ * Assembly graph is in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/assembly_graph.fastg
+ * Assembly graph in GFA format is in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/assembly_graph_with_scaffolds.gfa
 
+======= SPAdes pipeline finished.
+
+SPAdes log can be found here: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log
+
+Thank you for using SPAdes!
 "
 ```

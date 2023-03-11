@@ -3,13 +3,35 @@ project:
   output-dir: docs
 book:
   title: "Ensamblaje y Anotación de Genomas Bacterianos"
-  author: "Héctor Fabio Espitia-Navarro"
+  author: 
+    - name: Héctor Fabio Espitia-Navarro
+      affiliations:
+        - name: Universidad de Nariño | Grupo de Investigación Salud Pública
+          city: Pasto
+          state: Nariño
+          country: Colombia
+        - name: 3M Company | Corporate Research Materials Lab
+          city: Saint Paul
+          state: MN
+          country: EEUU
   date: today
   date-format: long
+  margin-footer: 
+    # ![](assets/images/udenar_logo_black.svg)
+    margin_footer.qmd
   favicon:
     assets/images/book.svg
     # assets/images/favicon-16x16.png
     # assets/images/favicon.svg
+  site-url: https://hspitia.github.io/bact-genome-assembly/
+  sharing: [twitter, facebook, linkedin]
+  sidebar:
+    # logo: https://www.udenar.edu.co/recursos/wp-content/uploads/2021/09/logo-udenar-negro.png
+    # footer: |
+    #   Esto es un footer para el sidebar
+    tools:
+      - icon: github
+        href: https://github.com/hspitia/bact-genome-assembly
   chapters:
     - index.qmd
     - setup.qmd
@@ -88,14 +110,15 @@ format:
     # fontsize: 12pt
     theme: 
       light:
-        - cosmo
+        # - cosmo
+        - flatly
         - assets/css/custom_light.scss
       dark:
         # - cyborg
-        - slate
+        - darkly
         - assets/css/custom_dark.scss
+        # - slate
         # - superhero
-        # - darkly
   pdf:
     lang: es-ES
     pdf-engine: xelatex
