@@ -303,8 +303,8 @@ Importante
 <h2 data-number="3.2" class="anchored" data-anchor-id="determinación-de-calidad"><span class="header-section-number">3.2</span> Determinación de calidad</h2>
 <p>Para revisar la calidad de los datos descargados, usaremos <code>fastqc</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrar al directorio del proyecto y al directorio datos</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ensamblaje/datos</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrar al directorio de datos en la carpeta del proyecto ensamblaje</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/proyectos/ensamblaje/datos</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Analizar todos los archivos descargados</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="at">-o</span> qc/fastqc <span class="pp">*</span>.fastq.gz</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -369,8 +369,8 @@ Nota
 <table class="table">
 <caption>Tabla&nbsp;3.1. Posibles resultados de la evaluación de calidad realizada por la herramienta FastQC</caption>
 <colgroup>
-<col style="width: 23%">
-<col style="width: 76%">
+<col style="width: 25%">
+<col style="width: 75%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -414,7 +414,7 @@ Nota
 <div class="cell-output cell-output-stdout">
 <pre><code>  /// MultiQC 🔍 | v1.14
 
-|           multiqc | Search path : /home/hector/ensamblaje/datos/qc/fastqc
+|           multiqc | Search path : /home/hector/proyectos/ensamblaje/datos/qc/fastqc
 |         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 16/16  
 |            fastqc | Found 8 reports
 |           multiqc | Compressing plot data

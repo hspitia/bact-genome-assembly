@@ -7,42 +7,39 @@
 
 ## Estructura de directorios
 
-Para que los datos, código, y resultados estén organizados en directorios independientes, primero crearemos la estructura de directorio del proyecto de ensamblaje.
-
-Abra una terminal y ejecute las siguientes órdenes:
-
-```{bash}
-#| echo: false
-cd $HOME
-mkdir -p ensamblaje/{datos,resultados,scripts}
-mkdir -p ensamblaje/datos/qc/fastqc
-mkdir -p ensamblaje/resultados/{00_datos_limpios,01_ensamblaje,02_ensamblaje_qc,03_anotacion}
-mkdir -p ensamblaje/resultados/00_datos_limpios/qc/{fastp,fastqc}
-```
+Para que cada proyecto esté organizado en carpetas independientes, primero crearemos el directorio para los proyectos. Abra una terminal y ejecute las siguientes órdenes:
 
 ```{bash}
 #| eval: false
-mkdir -p ensamblaje/{datos,resultados,scripts}
-mkdir -p ensamblaje/datos/qc/fastqc
-mkdir -p ensamblaje/resultados/{00_datos_limpios,01_ensamblaje,02_ensamblaje_qc,03_anotacion}
-mkdir -p ensamblaje/resultados/00_datos_limpios/qc/{fastp,fastqc}
+cd $HOME
+mkdir proyectos
 ```
 
 ::: callout-important
 A partir de aquí, se asume que usted debe ejecutar todos los comandos mostrados en la terminal.
 :::
 
+Ahora, se creará la estructura para nuestro proyecto de ensamblaje dentro del directorio `proyectos`. En la estructura se contemplan subdirectorios de datos, calidad y resultados:
+
+```{bash}
+#| eval: false
+mkdir -p proyectos/ensamblaje/{datos,resultados,scripts}
+mkdir -p proyectos/ensamblaje/datos/qc/fastqc
+mkdir -p proyectos/ensamblaje/resultados/{00_datos_limpios,01_ensamblaje,02_ensamblaje_qc,03_anotacion}
+mkdir -p proyectos/ensamblaje/resultados/00_datos_limpios/qc/{fastp,fastqc}
+```
+
 La estructura final del directorio del directorio del proyecto se puede ver con el comando `tree`:
 
 ```{bash}
 #| eval: false
 #| echo: true
-tree -L 4 --charset HTML ensamblaje
+tree -L 4 --charset HTML proyectos/ensamblaje
 ```
 
 ```{bash}
 #| echo: false
-echo "ensamblaje
+echo "proyectos/ensamblaje
 |-- datos
 |   \`-- qc
 |       \`-- fastqc
@@ -54,7 +51,9 @@ echo "ensamblaje
 |   |-- 01_ensamblaje
 |   |-- 02_ensamblaje_qc
 |   \`-- 03_anotacion
-\`-- scripts"
+\`-- scripts
+
+12 directories, 0 files"
 ```
 
 ````{=html}

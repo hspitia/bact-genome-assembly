@@ -14,7 +14,7 @@ Es importante comprender la calidad de los datos de secuenciación. Puede aprend
 ## Software requerido
 
 | Software | Versión | Descripción                                                                                                             | Ref.                                                                    |
-|---------------|---------------|---------------------------|---------------|
+|----------------|----------------|------------------------|----------------|
 | FastQC   | 0.12.1  | Herramienta para el control de calidad en datos de secuenciación de alto rendimiento                                    | [Sitio Web](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) |
 | MultiQC  | 1.14    | Herramienta para unificar y resumir múltiples reportes generados por FastQC y muchos otros programas de bioinformática. | @ewels2016; [sitio Web](https://multiqc.info/)                          |
 | fastp    | 0.23.2  | Herramienta para el pre-procesamiento rápido de archivos Fastq.                                                         | @chen2018; [repositorio GitHub](https://github.com/OpenGene/fastp)      |
@@ -25,8 +25,8 @@ Para revisar la calidad de los datos descargados, usaremos `fastqc`:
 
 ```{bash}
 #| eval: false
-# Entrar al directorio del proyecto y al directorio datos
-cd ensamblaje/datos
+# Entrar al directorio de datos en la carpeta del proyecto ensamblaje
+cd $HOME/proyectos/ensamblaje/datos
 # Analizar todos los archivos descargados
 fastqc -o qc/fastqc *.fastq.gz
 ```
@@ -85,7 +85,7 @@ El archivo comprimido `.zip` contiene una copia del reporte `.html`, gráficos, 
 Analicemos uno de los reportes de calidad de FastQC. Abra el archivo `SRR18335437_1_fastqc.html`. El reporte contiene diferentes secciones, llamadas módulos, que corresponden a diferentes evaluaciones de calidad que la herramienta hace sobre los datos (@fig-fastqc-report). Puede consultar información detallada (en inglés) a cerca de FastQC y sus módulos en el @sec-a-fastqc-help. Por cada módulo, el reporte presenta un ícono con tres posibles estados de acuerdo al resultado de la evaluación (@tbl-fastqc-results).
 
 |                        Símbolo                        | Descripción                                                                                                                                                                                                                                                                                                                                         |
-|:---------------:|-------------------------------------------------------|
+|:----------------:|------------------------------------------------------|
 |  ![](assets/images/fastqc-tick.png){width="0.26in"}   | Pasó. La muestra pasó la evaluación de calidad en esta categoría (módulo). No hay problemas de calidad.                                                                                                                                                                                                                                             |
 | ![](assets/images/fastqc-warning.png){width="0.26in"} | Advertencia. La muestra tiene un posible problema calidad. El usuario debería revisar la muestra y tomar las medidas necesarias para evitar el error de ser posible. Por la naturaleza de la secuenciación de ADN, es normal que se presenten advertencias en algunos módulos en las muestras sin que signifique que haya un problema real o grave. |
 |  ![](assets/images/fastqc-error.png){width="0.26in"}  | Falló. La muestra falló la evaluación de calidad en este módulo. El usuario debería limpiar los datos para corregir el error.                                                                                                                                                                                                                       |
@@ -113,13 +113,14 @@ multiqc --filename multiqc_report.html --outdir qc qc/fastqc
 #| echo: false
 echo "  /// MultiQC 🔍 | v1.14
 
-|           multiqc | Search path : /home/hector/ensamblaje/datos/qc/fastqc
+|           multiqc | Search path : /home/hector/proyectos/ensamblaje/datos/qc/fastqc
 |         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 16/16  
 |            fastqc | Found 8 reports
 |           multiqc | Compressing plot data
 |           multiqc | Report      : qc/multiqc_report.html
 |           multiqc | Data        : qc/multiqc_report_data
-|           multiqc | MultiQC complete"
+|           multiqc | MultiQC complete
+"
 ```
 
 Ahora MultiQC ha generado dos elementos, el archivo `multiqc_report.html` y un directorio `multiqc_report_data` que contiene archivos de estadísticas. Al abrir el reporte `.html` se puede ver la información de calidad de todos los archivos analizados con FastqQC (@fig-multiqc).

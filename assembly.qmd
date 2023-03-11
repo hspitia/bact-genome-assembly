@@ -10,7 +10,7 @@ Ahora que los datos están depurados, podemos ensamblar las muestras en sus corr
 ## Software requerido
 
 | Software | Versión | Descripción                                                                                                                | Ref.                                                                                                                     |
-|-----------|-----------|-----------------------------------|---------------|
+|----------|---------|----------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
 | SPAdes   | 3.15.5  | Conjunto de herramientas para ensamblaje *de novo* de genomas con múltiples flujos de trabajo de ensamblaje especializado. | @prjibelski2020; [Sitio Web](http://cab.spbu.ru/software/spades/); [repositorio GitHub](https://github.com/ablab/spades) |
 
 ## Ensamblaje de genomas

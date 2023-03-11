@@ -25,7 +25,17 @@ Descargaremos cuatro muestras de secuenciación de genoma completo o WGS (del in
 
 4.  SRR18335438
 
+
 ## Descarga
+
+::: {.callout-important}
+Recuerde siempre activar el ambiente       `ensam` (si no está activado ya) antes de ejecutar los comandos de esta guía:
+
+```{bash}
+#| eval: false
+mamba activate ensam
+```
+:::
 
 Para empezar a descargar las muestras, abra una terminal y ejecute las órdenes que se dan a continuación.
 
@@ -33,17 +43,16 @@ Para empezar a descargar las muestras, abra una terminal y ejecute las órdenes 
 Siempre que vea comentarios (líneas empezando con `#`) en las cajas de comandos, no los digite en la terminal. Estos comentarios solo proveen información adicional a cerca de cada comando.
 :::
 
-La descarga de cada muestra toma aproximadamente cinco minutos (o más), dependiendo de la velocidad de su conexión a Internet. No se preocupe si no ve ningún avance aparente después de ejecutar el comando de descarga (`fasterq-dump`).
-
-::: callout-tip
+::: callout-note
+-   La descarga de cada muestra toma aproximadamente cinco minutos (o más), dependiendo de la velocidad de su conexión a Internet. No se preocupe si no ve ningún avance aparente después de ejecutar el comando de descarga (`fasterq-dump`).
 -   Si quiere ver el progreso de cada descarga, use la opción `-p` (o `--progress`) con `fasterq-dump`
--   Explore otras opciones útiles de `fasterq-dump` consultando la ayuda: `fasterq-dump --help`
+-   Puede ver otras opciones útiles de `fasterq-dump` consultando la ayuda: `fasterq-dump --help`
 :::
 
 ```{bash}
 #| eval: false
 # Entrar al directorio para datos en el directorio del proyecto
-cd ensamblaje/datos
+cd $HOME/proyectos/ensamblaje/datos
 
 # Descargar las muestras
 fasterq-dump -S SRR22388518
@@ -103,7 +112,7 @@ fasterq-dump -S SRR18335437
 fasterq-dump -S SRR18335438
 ```
 
-Finalmente, aunque no es necesario, es una buena práctica comprimir las archivos descargados para que ocupen menos espacio en disco:
+Ahora, aunque no es necesario, es una buena práctica comprimir las archivos descargados para que ocupen menos espacio en disco:
 
 ```{bash}
 #| eval: false
@@ -122,5 +131,12 @@ ls
 echo "SRR18335437_1.fastq.gz  SRR18335438_2.fastq.gz  SRR22388519_1.fastq.gz
 SRR18335437_2.fastq.gz  SRR22388518_1.fastq.gz  SRR22388519_2.fastq.gz
 SRR18335438_1.fastq.gz  SRR22388518_2.fastq.gz"
+```
+
+Finalmente, regresemos al directorio de proyectos:
+
+```{bash}
+#| eval: false
+cd $HOME/proyectos
 ```
 
