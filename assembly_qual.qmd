@@ -1,1 +1,122 @@
 # Control de calidad de ensamblajes
+
+```{r}
+#| echo: false
+#| eval: true
+```
+
+En este paso se calcularán sobre cada ensamblaje, varias métricas que pueden ser usadas como indicadores de su calidad.
+
+## Software requerido
+
+| Software | Versión | Descripción                                                                                                                         | Ref.                                                                                                                  |
+|------------------|------------------|-------------------|------------------|
+| Quast    | 5.2.0   | Herramienta para evaluar la calidad de ensamblajes de genomas (pequeños) y metagenomas, mediante el cálculo de diferentes métricas. | @gurevich2013; [Sitio Web](https://quast.sourceforge.net/quast); [repositorio GitHub](https://github.com/ablab/quast) |
+|          |         |                                                                                                                                     |                                                                                                                       |
+
+## Determinación de calidad
+
+EL cálculo de las métricas se realiza usando el software Quast (del inglés ***QU**ality **AS**sessment **T**ool*). Aunque esta herramienta funciona sin un genoma de referencia, la evaluación de calidad será mejor si se provee uno. Este genoma podrá ser el del organismo más cercano o, como en nuestro caso, el del propio organismo(*H. pylori*[^assembly_qual-1]). Como tenemos acceso a un genoma de referencia, lo usaremos.
+
+[^assembly_qual-1]: *NCBI Datasets Genome page of Helicobacter pylori: <https://www.ncbi.nlm.nih.gov/labs/data-hub/genome/GCF_017821535.1/>*
+
+### Descarga del genoma de referencia
+
+El número de acceso (*accession number*) del genoma de referencia de *H. pylori*, es GCF_017821535.1. Este número es necesario para descargar el archivo del genoma con la herramienta `datasets`:
+
+```{bash}
+#| eval: false
+# Entrar al directorio datos del proyecto
+cd $HOME/proyectos/ensamblaje/datos
+
+# Descargar el paquete de datos con el genoma
+datasets download genome accession GCF_017821535.1 --filename GCF_017821535.1_dataset.zip
+
+```
+
+```{bash}
+#| echo: false
+echo "Collecting 1  records [================================================] 100% 1/1
+Downloading: GCF_017821535.1_dataset.zip    473kB done
+"
+```
+
+Descargado el paquete de datos con el genoma, debemos descomprimirlo:
+
+```{bash}
+#| eval: false
+unzip GCF_017821535.1_dataset.zip
+```
+
+```{bash}
+#| echo: false
+echo "Archive:  GCF_017821535.1_dataset.zip
+  inflating: README.md               
+  inflating: ncbi_dataset/data/assembly_data_report.jsonl  
+  inflating: ncbi_dataset/data/GCF_017821535.1/GCF_017821535.1_ASM1782153v1_genomic.fna  
+  inflating: ncbi_dataset/data/dataset_catalog.json
+"
+```
+
+Al descomprimir el paquete se generaron dos elemento, el archivo `README.md` y el directorio `ncbi_dataset`. El archivo que necesitamos es `ncbi_dataset/data/GCF_017821535.1/GCF_017821535.1_ASM1782153v1_genomic.fna`, así que lo moveremos y renombraremos a la ubicación apropiada:
+
+```{bash}
+#| eval: false
+mv ncbi_dataset/data/GCF_017821535.1/GCF_017821535.1_ASM1782153v1_genomic.fna \
+  GCF_017821535.1.fasta
+```
+
+Ahora podemos eliminar los archivos que no usaremos:
+
+```{bash}
+#| eval: false
+rm -fr README.md ncbi_dataset GCF_017821535.1_dataset.zip
+```
+
+### Ejecución de Quast
+
+```{bash}
+#| eval: false
+cd $HOME/proyectos/ensamblaje
+
+quast -o resultados/02_ensamblaje_qc/SRR22388518 \
+  -r datos/GCF_017821535.1.fasta \
+  -t 4 \
+  resultados/01_ensamblaje/SRR22388518.fasta
+```
+
+```{bash}
+#| echo: false
+echo "/home/hector/mambaforge/envs/ensam/bin/quast -o resultados/02_ensamblaje_qc/SRR22388518 -r datos/GCF_017821535.1.fasta -t 4 resultados/01_ensamblaje/SRR22388518.fasta
+
+Version: 5.2.0
+
+System information:
+  OS: Linux-5.15.0-67-generic-x86_64-with-glibc2.31 (linux_64)
+  Python version: 3.10.6
+  CPUs number: 8
+
+Started: 2023-03-12 20:15:20
+
+Logging to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/quast.log
+
+...
+
+RESULTS:
+  Text versions of total report are saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/report.html
+  PDF version (tables and plots) is saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/report.pdf
+  Icarus (contig browser) is saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/icarus.html
+  Log is saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/quast.log
+
+Finished: 2023-03-12 20:15:24
+Elapsed time: 0:00:04.507330
+NOTICEs: 3; WARNINGs: 0; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
+
+"
+```
+
+Quast genera un reporte en diferentes formatos: texto (.txt y .tsv), LaTeX (.tex), html (.html) y pdf (.pdf).

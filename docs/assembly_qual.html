@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ensamblaje y Anotación de Genomas Bacterianos - 4&nbsp; Ensamblaje</title>
+<title>Ensamblaje y Anotación de Genomas Bacterianos - 5&nbsp; Control de calidad de ensamblajes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,8 +83,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./assembly_qual.html" rel="next">
-<link href="./data_qual.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./assembly.html" rel="prev">
 <link href="./assets/images/book.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -117,7 +117,6 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -130,7 +129,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assembly.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ensamblaje</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assembly_qual.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Control de calidad de ensamblajes</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -208,13 +207,13 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assembly.html" class="sidebar-item-text sidebar-link active">
+  <a href="./assembly.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ensamblaje</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assembly_qual.html" class="sidebar-item-text sidebar-link">
+  <a href="./assembly_qual.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Control de calidad de ensamblajes</span></span></a>
   </div>
 </li>
@@ -251,8 +250,12 @@ div.csl-indent {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#software-requerido" id="toc-software-requerido" class="nav-link active" data-scroll-target="#software-requerido"><span class="header-section-number">4.1</span> Software requerido</a></li>
-  <li><a href="#ensamblaje-de-genomas" id="toc-ensamblaje-de-genomas" class="nav-link" data-scroll-target="#ensamblaje-de-genomas"><span class="header-section-number">4.2</span> Ensamblaje de genomas</a></li>
+  <li><a href="#software-requerido" id="toc-software-requerido" class="nav-link active" data-scroll-target="#software-requerido"><span class="header-section-number">5.1</span> Software requerido</a></li>
+  <li><a href="#determinación-de-calidad" id="toc-determinación-de-calidad" class="nav-link" data-scroll-target="#determinación-de-calidad"><span class="header-section-number">5.2</span> Determinación de calidad</a>
+  <ul class="collapse">
+  <li><a href="#descarga-del-genoma-de-referencia" id="toc-descarga-del-genoma-de-referencia" class="nav-link" data-scroll-target="#descarga-del-genoma-de-referencia"><span class="header-section-number">5.2.1</span> Descarga del genoma de referencia</a></li>
+  <li><a href="#ejecución-de-quast" id="toc-ejecución-de-quast" class="nav-link" data-scroll-target="#ejecución-de-quast"><span class="header-section-number">5.2.2</span> Ejecución de Quast</a></li>
+  </ul></li>
   </ul>
 </nav>
     <div class="quarto-margin-footer"><div class="margin-footer-item">
@@ -267,7 +270,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ensamblaje</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Control de calidad de ensamblajes</span></h1>
 </div>
 
 
@@ -282,9 +285,9 @@ div.csl-indent {
 
 </header>
 
-<p>Ahora que los datos están depurados, podemos ensamblar las muestras en sus correspondientes genomas</p>
-<section id="software-requerido" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="software-requerido"><span class="header-section-number">4.1</span> Software requerido</h2>
+<p>En este paso se calcularán sobre cada ensamblaje, varias métricas que pueden ser usadas como indicadores de su calidad.</p>
+<section id="software-requerido" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="software-requerido"><span class="header-section-number">5.1</span> Software requerido</h2>
 <table class="table">
 <thead>
 <tr class="header">
@@ -296,245 +299,118 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td>SPAdes</td>
-<td>3.15.5</td>
-<td>Conjunto de herramientas para ensamblaje <em>de novo</em> de genomas con múltiples flujos de trabajo de ensamblaje especializado.</td>
-<td><span class="citation" data-cites="prjibelski2020">Prjibelski et&nbsp;al. (<a href="references.html#ref-prjibelski2020" role="doc-biblioref">2020</a>)</span>; <a href="http://cab.spbu.ru/software/spades/">Sitio Web</a>; <a href="https://github.com/ablab/spades">repositorio GitHub</a></td>
+<td>Quast</td>
+<td>5.2.0</td>
+<td>Herramienta para evaluar la calidad de ensamblajes de genomas (pequeños) y metagenomas, mediante el cálculo de diferentes métricas.</td>
+<td><span class="citation" data-cites="gurevich2013">Gurevich et&nbsp;al. (<a href="references.html#ref-gurevich2013" role="doc-biblioref">2013</a>)</span>; <a href="https://quast.sourceforge.net/quast">Sitio Web</a>; <a href="https://github.com/ablab/quast">repositorio GitHub</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="ensamblaje-de-genomas" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="ensamblaje-de-genomas"><span class="header-section-number">4.2</span> Ensamblaje de genomas</h2>
-<p>Usaremos el ensamblador <em>de novo</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> SPAdes <span class="citation" data-cites="prjibelski2020">(<a href="references.html#ref-prjibelski2020" role="doc-biblioref">Prjibelski et&nbsp;al. 2020</a>)</span>, el cual fue desarrollado inicialmente para ensamblar secuencias cortas Illumina obtenidas de aislamientos bacterianos y secuenciación de células individuales (<em>single-cell sequencing</em>), y que con el tiempo ha sido extendido para usar secuencias de otras tecnologías y ensamblar metagenomas, transcriptomas, y plásmidos.</p>
-<p>Para ensamblar la muestra ejecute la siguiente orden:</p>
+<section id="determinación-de-calidad" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="determinación-de-calidad"><span class="header-section-number">5.2</span> Determinación de calidad</h2>
+<p>EL cálculo de las métricas se realiza usando el software Quast (del inglés <em><strong>QU</strong>ality <strong>AS</strong>sessment <strong>T</strong>ool</em>). Aunque esta herramienta funciona sin un genoma de referencia, la evaluación de calidad será mejor si se provee uno. Este genoma podrá ser el del organismo más cercano o, como en nuestro caso, el del propio organismo(<em>H. pylori</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>). Como tenemos acceso a un genoma de referencia, lo usaremos.</p>
+<section id="descarga-del-genoma-de-referencia" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="descarga-del-genoma-de-referencia"><span class="header-section-number">5.2.1</span> Descarga del genoma de referencia</h3>
+<p>El número de acceso (<em>accession number</em>) del genoma de referencia de <em>H. pylori</em>, es GCF_017821535.1. Este número es necesario para descargar el archivo del genoma con la herramienta <code>datasets</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrar en el directorio raíz del proyecto </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ensamblaje</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejecutar el ensamblaje</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">spades.py</span> <span class="dt">\</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--isolate</span> <span class="dt">\</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-1</span> resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz <span class="dt">\</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">-2</span> resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz <span class="dt">\</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> resultados/01_ensamblaje/SRR22388518 <span class="dt">\</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-t</span> 4</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrar al directorio datos del proyecto</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/proyectos/ensamblaje/datos</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Descargar el paquete de datos con el genoma</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">datasets</span> download genome accession GCF_017821535.1 <span class="at">--filename</span> GCF_017821535.1_dataset.zip</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Veamos los parámetros usados en el comando anterior:</p>
-<ul>
-<li><p><code>--isolate</code>: indica a SPAdes que el pipeline a ser ejecutado es el de ensamblaje de aislamientos bacterianos.</p></li>
-<li><p><code>-1</code>: archivo con los <em>reads forward</em></p></li>
-<li><p><code>-2</code>: archivo con los <em>reads reverse</em></p></li>
-<li><p><code>-o</code>: directorio donde se almacenarán los archivos de salida</p></li>
-<li><p><code>-t</code>: hilos (<em>threads</em>) de procesos en paralelo para incrementar la velocidad del ensamblaje</p></li>
-</ul>
-<p>El tiempo de ensamblaje depende del tamaño de la muestra a ensamblar, es decir de número de <em>reads</em> en los archivos <code>.fastq.gz</code> de entrada, y del número de <em>cores</em> o procesadores del computador y los hilos asignados al comando (opción <code>-t</code>). En el caso anterior el proceso tomó 35 minutos para ensamblar un total de 1726.186 de <em>reads</em> (863093 <span class="math inline">\(\times\)</span> 2) usando 4 hilos en una máquina con ocho <em>cores</em>.</p>
-<p>Ahora veamos la salida del comando:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Command line: /home/hector/mambaforge/envs/ensam/bin/spades.py  --isolate   -1  /home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz  -2  /home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz  -o  /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518  -t  4   
+<pre><code>Collecting 1  records [================================================] 100% 1/1
+Downloading: GCF_017821535.1_dataset.zip    473kB done</code></pre>
+</div>
+</div>
+<p>Descargado el paquete de datos con el genoma, debemos descomprimirlo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> GCF_017821535.1_dataset.zip</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Archive:  GCF_017821535.1_dataset.zip
+  inflating: README.md               
+  inflating: ncbi_dataset/data/assembly_data_report.jsonl  
+  inflating: ncbi_dataset/data/GCF_017821535.1/GCF_017821535.1_ASM1782153v1_genomic.fna  
+  inflating: ncbi_dataset/data/dataset_catalog.json</code></pre>
+</div>
+</div>
+<p>Al descomprimir el paquete se generaron dos elemento, el archivo <code>README.md</code> y el directorio <code>ncbi_dataset</code>. El archivo que necesitamos es <code>ncbi_dataset/data/GCF_017821535.1/GCF_017821535.1_ASM1782153v1_genomic.fna</code>, así que lo moveremos y renombraremos a la ubicación apropiada:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ncbi_dataset/data/GCF_017821535.1/GCF_017821535.1_ASM1782153v1_genomic.fna <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  GCF_017821535.1.fasta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ahora podemos eliminar los archivos que no usaremos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-fr</span> README.md ncbi_dataset GCF_017821535.1_dataset.zip</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ejecución-de-quast" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="ejecución-de-quast"><span class="header-section-number">5.2.2</span> Ejecución de Quast</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$HOME</span>/proyectos/ensamblaje</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quast</span> <span class="at">-o</span> resultados/02_ensamblaje_qc/SRR22388518 <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-r</span> datos/GCF_017821535.1.fasta <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-t</span> 4 <span class="dt">\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  resultados/01_ensamblaje/SRR22388518.fasta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>/home/hector/mambaforge/envs/ensam/bin/quast -o resultados/02_ensamblaje_qc/SRR22388518 -r datos/GCF_017821535.1.fasta -t 4 resultados/01_ensamblaje/SRR22388518.fasta
+
+Version: 5.2.0
 
 System information:
-  SPAdes version: 3.15.5
+  OS: Linux-5.15.0-67-generic-x86_64-with-glibc2.31 (linux_64)
   Python version: 3.10.6
-  OS: Linux-5.15.0-67-generic-x86_64-with-glibc2.31
+  CPUs number: 8
 
-Output dir: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518
-Mode: ONLY assembling (without read error correction)
-Debug mode is turned OFF
+Started: 2023-03-12 20:15:20
 
-Dataset parameters:
-  Isolate mode
-  Reads:
-    Library number: 1, library type: paired-end
-      orientation: fr
-      left reads: ['/home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_1.clean.fastq.gz']
-      right reads: ['/home/hector/proyectos/ensamblaje/resultados/00_datos_limpios/SRR22388518_2.clean.fastq.gz']
-      interlaced reads: not specified
-      single reads: not specified
-      merged reads: not specified
-Assembly parameters:
-  k: automatic selection based on read length
-  Repeat resolution is enabled
-  Mismatch careful mode is turned OFF
-  MismatchCorrector will be SKIPPED
-  Coverage cutoff is turned OFF
-Other parameters:
-  Dir for temp files: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/tmp
-  Threads: 4
-  Memory limit (in Gb): 7
-
-
-======= SPAdes pipeline started. Log can be found here: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log
+Logging to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/quast.log
 
 ...
 
-===== Terminate finished. 
+RESULTS:
+  Text versions of total report are saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/report.html
+  PDF version (tables and plots) is saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/report.pdf
+  Icarus (contig browser) is saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/icarus.html
+  Log is saved to /home/hector/proyectos/ensamblaje/resultados/02_ensamblaje_qc/SRR22388518/quast.log
 
- * Assembled contigs are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/contigs.fasta
- * Assembled scaffolds are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/scaffolds.fasta
- * Paths in the assembly graph corresponding to the contigs are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/contigs.paths
- * Paths in the assembly graph corresponding to the scaffolds are in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/scaffolds.paths
- * Assembly graph is in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/assembly_graph.fastg
- * Assembly graph in GFA format is in /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/assembly_graph_with_scaffolds.gfa
+Finished: 2023-03-12 20:15:24
+Elapsed time: 0:00:04.507330
+NOTICEs: 3; WARNINGs: 0; non-fatal ERRORs: 0
 
-======= SPAdes pipeline finished.
-
-SPAdes log can be found here: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log
-
-Thank you for using SPAdes!</code></pre>
+Thank you for using QUAST!</code></pre>
 </div>
 </div>
-<p>En la salida anterior, se puede observar al principio el comando ejecutado, así como información del sistema y la ubicicaión de los datos de entrada y salida. <code>spades.py</code> indica el inicio del ensamblaje mediante el encabezado <code>======= SPAdes pipeline started.</code> y presenta la ubicación del archivo <em>log</em> (<code>Log can be found here: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log</code>). Este archivo <em>log</em> es muy importante pues contiene toda la información del proceso del ensamblaje, incluido cualquier error que se haya presentado, lo que permite tomar acciones para corregirlo. <code>spades.py</code> también detalla el proceso de ensamblaje a través de una amplia serie de mensajes ubicados en lugar de los tres puntos <code>...</code> en la salida anterior. Cuando el proceso de ensamblaje es exitoso, <code>spades.py</code> presenta la sección <code>===== Terminate finished.</code> que contiene la ubicación de los archivos de salida. Finalmente, bajo la sección <code>======= SPAdes pipeline finished.</code>, el programa presenta de nuevo la ubicación del archivo <em>log</em>.</p>
-<p>Examinemos ahora el directorio de salida de SPAdes:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> resultados/01_ensamblaje/SRR22388518</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>assembly_graph_after_simplification.gfa
-assembly_graph.fastg
-assembly_graph_with_scaffolds.gfa
-before_rr.fasta
-contigs.fasta
-contigs.paths
-dataset.info
-input_dataset.yaml
-K127
-K21
-K33
-K55
-K77
-K99
-misc
-params.txt
-pipeline_state
-run_spades.sh
-run_spades.yaml
-scaffolds.fasta
-scaffolds.paths
-spades.log
-tmp</code></pre>
-</div>
-</div>
-<p>Estos son los archivos de salida cuando el ensamblaje es exitoso:</p>
-<ul>
-<li><code>contigs.fasta</code>: las secuencias de los <em>contigs</em><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> (en español, llamado menos frecuentemente como cóntigo) en formato FASTA<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
-<li><code>scaffolds.fasta</code>: las secuencias de <em>scaffolds</em><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> en formato FASTA</li>
-<li><code>assembly_graph.gfa</code>: grafo de ensamblaje y los camios de los <em>scaffolds</em> en formato GFA 1.0<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
-<li><code>assembly_graph.fastg</code>: grafo del ensamblaje en formato FASTG</li>
-<li><code>contigs.paths</code>: caminos de los <em>contigs</em> en el grafo de ensamblaje</li>
-<li><code>scaffolds.paths</code>: caminos de los <em>scaffolds</em> en el grafo de ensamblaje</li>
-<li><code>spades.log</code>: archivo con todos los mensajes del proceso</li>
-</ul>
-<p>Dado que SPAdes es un ensamblador de genomas basado en grafos de De Bruijn<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> <span class="citation" data-cites="compeau2011">(<a href="references.html#ref-compeau2011" role="doc-biblioref">Compeau, Pevzner, y Tesler 2011</a>)</span>, algunos de los archivos de salida contienen información de los grafos usados durante el ensamblaje (con extensión <code>.gfa</code> y <code>.fastg</code>). Si desea visualizar los archivos de grafos puede usar la aplicación Bandage<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> <span class="citation" data-cites="wick2015">(<a href="references.html#ref-wick2015" role="doc-biblioref">Wick et&nbsp;al. 2015</a>)</span>.</p>
-<p>Los archivos de salida más importantes son aquellos que contienen las secuencias del ensamblaje en sí, es decir los <em>contigs</em> y <em>scaffolds</em> en formato FASTA (<code>.fasta</code>). Los <em>scaffolds</em> son las secuencias más largas de ensamblaje, las cuales son creadas a partir de las secuencias de los <em>contigs</em>. Este es el archivo que se usará como resultado final del ensamblaje y por lo tanto anotado.</p>
-<p>Veamos las primeras 10 líneas del archivo <code>scaffolds.fasta</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> resultados/01_ensamblaje/SRR22388518/scaffolds.fasta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>&gt;NODE_1_length_407393_cov_61.379170
-GCTCTGTTGAATGATTTATCCAAAAATCGTTTAGCAACTAGCAAGGTTGAACTAGGAATA
-CAACAAAAATCCTAAATTAAGAGAATTTTATAGCTTTTTATAGGATTTTATAGGTTTGTA
-GTAACGGTATTTTGGGCAAGAAATCAACCTGACCACTTACAACCTTTGCCGCATCAACAT
-GTTTTTGCATGACATCAATTACTCTAAATTCCACATTGCGCTAGGGGACACGCTTTTAGA
-TCCAAAACATGAAGACGATGAGCCTTTTGATGCGATCGTTTCCAACCCTCCTTATTCCAC
-TAAATGGGTGGGCGATAACAACCCTATTTTAATCAACGACGAGCGCTTTAGCCCGGCCGG
-TGTGCTAGCGCCCAAAAACGCCGCCGATCTCGCTTTCACCATGCACATGCTTTCTTATTT
-ATCCAATAGCGGCACGGCTGCGATCGTGGAATTCCCCGGGGTGCTTTATAGGGGGAATGC
-TGAAGCAAAAATCAGAGAATATTTAGTCAAAGAAAATTTCATTGACTGCGTGATCGCTTT</code></pre>
-</div>
-</div>
-<p>En el identificador (nombre) del primer <em>scaffold</em> <code>&gt;NODE_1_length_407393_cov_61.379170</code>, se puede observar alguna información de la secuencia: <code>1</code> es el número del <em>contig</em>/<em>scaffold</em>, 407393 es la longitud de la secuencia en pares de bases (bp), y 61.379170 es el número de <em>k</em>-mers que cubren el <em>scaffold</em>.</p>
-<p>Con un simple comando podemos averiguar el número total de <em>scaffolds</em> en el ensamblaje:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'&gt;'</span> resultados/01_ensamblaje/SRR22388518/scaffolds.fasta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>336</code></pre>
-</div>
-</div>
-<p>Ahora terminaremos de procesar el conjunto de datos ensambando el resto de las muestras:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">spades.py</span> <span class="dt">\</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--isolate</span> <span class="dt">\</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-1</span> resultados/00_datos_limpios/SRR22388519_1.clean.fastq.gz <span class="dt">\</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-2</span> resultados/00_datos_limpios/SRR22388519_2.clean.fastq.gz <span class="dt">\</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> resultados/01_ensamblaje/SRR22388519 <span class="dt">\</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-t</span> 4</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">spades.py</span> <span class="dt">\</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--isolate</span> <span class="dt">\</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-1</span> resultados/00_datos_limpios/SRR18335437_1.clean.fastq.gz <span class="dt">\</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-2</span> resultados/00_datos_limpios/SRR18335437_2.clean.fastq.gz <span class="dt">\</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> resultados/01_ensamblaje/SRR18335437 <span class="dt">\</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-t</span> 4</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="ex">spades.py</span> <span class="dt">\</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">--isolate</span> <span class="dt">\</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">-1</span> resultados/00_datos_limpios/SRR18335438_1.clean.fastq.gz <span class="dt">\</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">-2</span> resultados/00_datos_limpios/SRR18335438_2.clean.fastq.gz <span class="dt">\</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> resultados/01_ensamblaje/SRR18335438 <span class="dt">\</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">-t</span> 4</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Para que cada ensamblaje (<code>scaffolds.fasta</code>) tenga el nombre de la correspondiente muestra, crearemos enlaces simbólicos en el directorio <code>resulltados/01_ensamblaje</code>. Por ejemplo, dentro del directorio <code>resultados/01_ensamblaje</code> el archivo <code>SRR22388518.fasta</code> apuntará al archivo <code>SRR22388519/scaffolds.fasta</code>. Esto se hace para que los pasos siguientes de la guía (control de calidad y anotación) se ejecuten con mayor comodidad. Para crear los enlaces ejecute la siguientes órdenes:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sr</span> resultados/01_ensamblaje/SRR22388518/scaffolds.fasta <span class="dt">\</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  resultados/01_ensamblaje/SRR22388518.fasta</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sr</span> resultados/01_ensamblaje/SRR22388519/scaffolds.fasta <span class="dt">\</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  resultados/01_ensamblaje/SRR22388519.fasta</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sr</span> resultados/01_ensamblaje/SRR18335437/scaffolds.fasta <span class="dt">\</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  resultados/01_ensamblaje/SRR18335437.fasta</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sr</span> resultados/01_ensamblaje/SRR18335438/scaffolds.fasta <span class="dt">\</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  resultados/01_ensamblaje/SRR18335438.fasta</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Verifiquemos los enlaces creados:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> resultados/01_ensamblaje</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>total 16K
-drwxrwxr-x  9 hector hector 4,0K mar 12 19:33 SRR18335437
-lrwxrwxrwx  1 hector hector   27 mar 12 18:54 SRR18335437.fasta -&gt; SRR18335437/scaffolds.fasta
-drwxrwxr-x  9 hector hector 4,0K mar 12 19:57 SRR18335438
-lrwxrwxrwx  1 hector hector   27 mar 12 18:54 SRR18335438.fasta -&gt; SRR18335438/scaffolds.fasta
-drwxrwxr-x 11 hector hector 4,0K mar 11 13:54 SRR22388518
-lrwxrwxrwx  1 hector hector   27 mar 12 18:54 SRR22388518.fasta -&gt; SRR22388518/scaffolds.fasta
-drwxrwxr-x 11 hector hector 4,0K mar 12 13:43 SRR22388519
-lrwxrwxrwx  1 hector hector   27 mar 12 18:54 SRR22388519.fasta -&gt; SRR22388519/scaffolds.fasta</code></pre>
-</div>
-</div>
-<p>Finalmente, con todos los ensamblajes listos, procederemos a analizar su calidad.</p>
+<p>Quast genera un reporte en diferentes formatos: texto (.txt y .tsv), LaTeX (.tex), html (.html) y pdf (.pdf).</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-compeau2011" class="csl-entry" role="listitem">
-Compeau, Phillip E. C., Pavel A. Pevzner, y Glenn Tesler. 2011. <span>«Why are de Bruijn graphs useful for genome assembly?»</span> <em>Nature biotechnology</em> 29 (11): 987-91. <a href="https://doi.org/10.1038/nbt.2023">https://doi.org/10.1038/nbt.2023</a>.
-</div>
-<div id="ref-prjibelski2020" class="csl-entry" role="listitem">
-Prjibelski, Andrey, Dmitry Antipov, Dmitry Meleshko, Alla Lapidus, y Anton Korobeynikov. 2020. <span>«Using SPAdes De Novo Assembler»</span>. <em>Current Protocols in Bioinformatics</em> 70 (1): e102. <a href="https://doi.org/10.1002/cpbi.102">https://doi.org/10.1002/cpbi.102</a>.
-</div>
-<div id="ref-wick2015" class="csl-entry" role="listitem">
-Wick, Ryan R., Mark B. Schultz, Justin Zobel, y Kathryn E. Holt. 2015. <span>«Bandage: interactive visualization of de novo genome assemblies»</span>. <em>Bioinformatics</em> 31 (20): 3350-52. <a href="https://doi.org/10.1093/bioinformatics/btv383">https://doi.org/10.1093/bioinformatics/btv383</a>.
+<div id="ref-gurevich2013" class="csl-entry" role="listitem">
+Gurevich, Alexey, Vladislav Saveliev, Nikolay Vyahhi, y Glenn Tesler. 2013. <span>«QUAST: quality assessment tool for genome assemblies»</span>. <em>Bioinformatics</em> 29 (8): 1072-75. <a href="https://doi.org/10.1093/bioinformatics/btt086">https://doi.org/10.1093/bioinformatics/btt086</a>.
 </div>
 </div>
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Wikipedia - De novo assemblers: <a href="https://en.wikipedia.org/wiki/De_novo_sequence_assemblers" class="uri">https://en.wikipedia.org/wiki/De_novo_sequence_assemblers</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Wikipedia - Cóntigo: <a href="https://es.wikipedia.org/wiki/C%C3%B3ntigo" class="uri">https://es.wikipedia.org/wiki/C%C3%B3ntigo</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Wikipedia - Formato FASTA: <a href="https://es.wikipedia.org/wiki/Formato_FASTA" class="uri">https://es.wikipedia.org/wiki/Formato_FASTA</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Wikipedia - <em>Scaffolding (bioinformatics)</em>: <a href="https://en.wikipedia.org/wiki/Scaffolding_(bioinformatics)" class="uri">https://en.wikipedia.org/wiki/Scaffolding_(bioinformatics)</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p><em>The GFA Format Specification</em>: <a href="https://gfa-spec.github.io/GFA-spec/GFA1.html" class="uri">https://gfa-spec.github.io/GFA-spec/GFA1.html</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Wikipedia - Grafo de De Bruijn: <a href="https://es.wikipedia.org/wiki/Grafo_de_De_Bruijn" class="uri">https://es.wikipedia.org/wiki/Grafo_de_De_Bruijn</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>Bandage: <a href="http://rrwick.github.io/Bandage/" class="uri">http://rrwick.github.io/Bandage/</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><em>NCBI Datasets Genome page of Helicobacter pylori: <a href="https://www.ncbi.nlm.nih.gov/labs/data-hub/genome/GCF_017821535.1/" class="uri">https://www.ncbi.nlm.nih.gov/labs/data-hub/genome/GCF_017821535.1/</a></em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -889,13 +765,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./data_qual.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Control de calidad y limpieza de datos</span></span>
+      <a href="./assembly.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Ensamblaje</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./assembly_qual.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Control de calidad de ensamblajes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">Bibliografía</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

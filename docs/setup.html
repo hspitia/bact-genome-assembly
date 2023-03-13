@@ -194,6 +194,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./assembly_qual.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Control de calidad de ensamblajes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bibliografía</span></a>
   </div>
@@ -533,8 +539,8 @@ Nota
 </div>
 <p>Ahora instale los paquetes ejecutando el siguiente comando:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-c</span> bioconda csvtk fastp fastqc java-jdk multiqc pigz prokka <span class="dt">\</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  quast spades sra-tools wget</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-c</span> bioconda csvtk fastp fastqc java-jdk multiqc ncbi-datasets-cli <span class="dt">\</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  pigz prokka quast spades sra-tools wget</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A continuación verá algunos mensajes y barras de progreso mientras mamba descarga los listados de paquetes y busca los paquetes que se ordenaron instalar. Al final mamba solicitará que confirme la instalación de los paquetes:</p>
 <div class="cell">
@@ -542,7 +548,7 @@ Nota
 <pre><code>...
   Summary:
 
-  Install: 289 packages
+  Install: 290 packages
 
   Total download: 1GB
 
@@ -553,7 +559,7 @@ Confirm changes: [Y/n]</code></pre>
 </div>
 </div>
 <p>Confirme escribiendo <code>Y</code> y después presione <code>&lt;ENTER&gt;</code>. De nuevo verá una serie de tareas completadas y barras de progreso mientras la instalación transcurre.</p>
-<p>Aunque se ordenó instalar 11 paquetes, cada uno de ellos requiere múltiples dependencias, es decir, paquetes adicionales para funcionar. Aquí es donde se facilitan las cosas: conda/mamba se encarga de revisar las dependencias de cada paquete, instalarlas y configurarlas automáticamente para que cada programa funcione adecuadamente.</p>
+<p>Aunque se ordenó instalar 11 paquetes, cada uno de ellos requiere múltiples dependencias, es decir, paquetes adicionales para funcionar. Aquí es donde se facilitan las cosas: mamba (o conda) se encarga de revisar las dependencias de cada paquete, instalarlas y configurarlas automáticamente para que cada programa funcione adecuadamente.</p>
 <p>Al finalizar la instalación verá un mensaje parecido a este:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">

@@ -38,7 +38,7 @@ book:
     - data.qmd
     - data_qual.qmd
     - assembly.qmd
-    # - assembly_qual.qmd
+    - assembly_qual.qmd
     # - annotation.qmd
     # - author.qmd
     - references.qmd

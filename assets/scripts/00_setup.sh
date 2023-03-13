@@ -79,5 +79,14 @@ for i in SRR18335437 SRR18335438 SRR22388518 SRR22388519; do
     -2 resultados/00_datos_limpios/${i}_2.clean.fastq.gz \
     -o resultados/01_ensamblaje/${i} \
     -t 4
+
+  ln -sr resultados/01_ensamblaje/${i}/scaffolds.fasta resultados/01_ensamblaje/${i}.fasta
 done
 
+# QC
+for i in SRR18335437 SRR18335438 SRR22388518 SRR22388519; do
+  quast -o resultados/02_ensamblaje_qc/${i} \
+    -r datos/GCF_017821535.1.fasta \
+    -t 4 \
+    resultados/01_ensamblaje/${i}.fasta
+done

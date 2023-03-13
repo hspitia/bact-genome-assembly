@@ -10,7 +10,7 @@ Ahora que los datos están depurados, podemos ensamblar las muestras en sus corr
 ## Software requerido
 
 | Software | Versión | Descripción                                                                                                                | Ref.                                                                                                                     |
-|----------|---------|----------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+|------------------|------------------|-------------------|------------------|
 | SPAdes   | 3.15.5  | Conjunto de herramientas para ensamblaje *de novo* de genomas con múltiples flujos de trabajo de ensamblaje especializado. | @prjibelski2020; [Sitio Web](http://cab.spbu.ru/software/spades/); [repositorio GitHub](https://github.com/ablab/spades) |
 
 ## Ensamblaje de genomas
@@ -33,6 +33,22 @@ spades.py \
   -o resultados/01_ensamblaje/SRR22388518 \
   -t 4
 ```
+
+Veamos los parámetros usados en el comando anterior:
+
+-   `--isolate`: indica a SPAdes que el pipeline a ser ejecutado es el de ensamblaje de aislamientos bacterianos.
+
+-   `-1`: archivo con los *reads forward*
+
+-   `-2`: archivo con los *reads reverse*
+
+-   `-o`: directorio donde se almacenarán los archivos de salida
+
+-   `-t`: hilos (*threads*) de procesos en paralelo para incrementar la velocidad del ensamblaje
+
+El tiempo de ensamblaje depende del tamaño de la muestra a ensamblar, es decir de número de *reads* en los archivos `.fastq.gz` de entrada, y del número de *cores* o procesadores del computador y los hilos asignados al comando (opción `-t`). En el caso anterior el proceso tomó 35 minutos para ensamblar un total de 1726.186 de *reads* (863093 $\times$ 2) usando 4 hilos en una máquina con ocho *cores*.
+
+Ahora veamos la salida del comando:
 
 ```{bash}
 #| echo: false
@@ -89,3 +105,134 @@ SPAdes log can be found here: /home/hector/proyectos/ensamblaje/resultados/01_en
 Thank you for using SPAdes!
 "
 ```
+
+En la salida anterior, se puede observar al principio el comando ejecutado, así como información del sistema y la ubicicaión de los datos de entrada y salida. `spades.py` indica el inicio del ensamblaje mediante el encabezado `======= SPAdes pipeline started.` y presenta la ubicación del archivo *log* (`Log can be found here: /home/hector/proyectos/ensamblaje/resultados/01_ensamblaje/SRR22388518/spades.log`). Este archivo *log* es muy importante pues contiene toda la información del proceso del ensamblaje, incluido cualquier error que se haya presentado, lo que permite tomar acciones para corregirlo. `spades.py` también detalla el proceso de ensamblaje a través de una amplia serie de mensajes ubicados en lugar de los tres puntos `...` en la salida anterior. Cuando el proceso de ensamblaje es exitoso, `spades.py` presenta la sección `===== Terminate finished.` que contiene la ubicación de los archivos de salida. Finalmente, bajo la sección `======= SPAdes pipeline finished.`, el programa presenta de nuevo la ubicación del archivo *log*.
+
+Examinemos ahora el directorio de salida de SPAdes:
+
+```{bash}
+#| eval: false
+ls resultados/01_ensamblaje/SRR22388518
+```
+
+```{bash}
+#| echo: false
+cd $HOME/proyectos/ensamblaje
+ls resultados/01_ensamblaje/SRR22388518
+```
+
+Estos son los archivos de salida cuando el ensamblaje es exitoso:
+
+-   `contigs.fasta`: las secuencias de los *contigs*[^assembly-2] (en español, llamado menos frecuentemente como cóntigo) en formato FASTA[^assembly-3]
+-   `scaffolds.fasta`: las secuencias de *scaffolds*[^assembly-4] en formato FASTA
+-   `assembly_graph.gfa`: grafo de ensamblaje y los camios de los *scaffolds* en formato GFA 1.0[^assembly-5]
+-   `assembly_graph.fastg`: grafo del ensamblaje en formato FASTG
+-   `contigs.paths`: caminos de los *contigs* en el grafo de ensamblaje
+-   `scaffolds.paths`: caminos de los *scaffolds* en el grafo de ensamblaje
+-   `spades.log`: archivo con todos los mensajes del proceso
+
+[^assembly-2]: Wikipedia - Cóntigo: <https://es.wikipedia.org/wiki/C%C3%B3ntigo>
+
+[^assembly-3]: Wikipedia - Formato FASTA: <https://es.wikipedia.org/wiki/Formato_FASTA>
+
+[^assembly-4]: Wikipedia - *Scaffolding (bioinformatics)*: <https://en.wikipedia.org/wiki/Scaffolding_(bioinformatics)>
+
+[^assembly-5]: *The GFA Format Specification*: <https://gfa-spec.github.io/GFA-spec/GFA1.html>
+
+Dado que SPAdes es un ensamblador de genomas basado en grafos de De Bruijn[^assembly-6] [@compeau2011], algunos de los archivos de salida contienen información de los grafos usados durante el ensamblaje (con extensión `.gfa` y `.fastg`). Si desea visualizar los archivos de grafos puede usar la aplicación Bandage[^assembly-7] [@wick2015].
+
+[^assembly-6]: Wikipedia - Grafo de De Bruijn: <https://es.wikipedia.org/wiki/Grafo_de_De_Bruijn>
+
+[^assembly-7]: Bandage: <http://rrwick.github.io/Bandage/>
+
+Los archivos de salida más importantes son aquellos que contienen las secuencias del ensamblaje en sí, es decir los *contigs* y *scaffolds* en formato FASTA (`.fasta`). Los *scaffolds* son las secuencias más largas de ensamblaje, las cuales son creadas a partir de las secuencias de los *contigs*. Este es el archivo que se usará como resultado final del ensamblaje y por lo tanto anotado.
+
+Veamos las primeras 10 líneas del archivo `scaffolds.fasta`:
+
+```{bash}
+#| eval: false
+head resultados/01_ensamblaje/SRR22388518/scaffolds.fasta
+```
+
+```{bash}
+#| echo: false
+cd $HOME/proyectos/ensamblaje
+head resultados/01_ensamblaje/SRR22388518/scaffolds.fasta
+```
+
+En el identificador (nombre) del primer *scaffold* `>NODE_1_length_407393_cov_61.379170`, se puede observar alguna información de la secuencia: `1` es el número del *contig*/*scaffold*, 407393 es la longitud de la secuencia en pares de bases (bp), y 61.379170 es el número de *k*-mers que cubren el *scaffold*.
+
+Con un simple comando podemos averiguar el número total de *scaffolds* en el ensamblaje:
+
+```{bash}
+#| eval: false
+grep -c '>' resultados/01_ensamblaje/SRR22388518/scaffolds.fasta
+```
+
+```{bash}
+#| echo: false
+cd $HOME/proyectos/ensamblaje
+grep -c '>' resultados/01_ensamblaje/SRR22388518/scaffolds.fasta
+```
+
+Ahora terminaremos de procesar el conjunto de datos ensambando el resto de las muestras:
+
+```{bash}
+#| eval: false
+spades.py \
+  --isolate \
+  -1 resultados/00_datos_limpios/SRR22388519_1.clean.fastq.gz \
+  -2 resultados/00_datos_limpios/SRR22388519_2.clean.fastq.gz \
+  -o resultados/01_ensamblaje/SRR22388519 \
+  -t 4
+
+spades.py \
+  --isolate \
+  -1 resultados/00_datos_limpios/SRR18335437_1.clean.fastq.gz \
+  -2 resultados/00_datos_limpios/SRR18335437_2.clean.fastq.gz \
+  -o resultados/01_ensamblaje/SRR18335437 \
+  -t 4
+
+spades.py \
+  --isolate \
+  -1 resultados/00_datos_limpios/SRR18335438_1.clean.fastq.gz \
+  -2 resultados/00_datos_limpios/SRR18335438_2.clean.fastq.gz \
+  -o resultados/01_ensamblaje/SRR18335438 \
+  -t 4
+```
+
+Para que cada ensamblaje (`scaffolds.fasta`) tenga el nombre de la correspondiente muestra, crearemos enlaces simbólicos en el directorio `resulltados/01_ensamblaje`. Por ejemplo, dentro del directorio `resultados/01_ensamblaje` el archivo `SRR22388518.fasta` apuntará al archivo `SRR22388519/scaffolds.fasta`. Esto se hace para que los pasos siguientes de la guía (control de calidad y anotación) se ejecuten con mayor comodidad. Para crear los enlaces ejecute la siguientes órdenes:
+
+```{bash}
+#| eval: false
+ln -sr resultados/01_ensamblaje/SRR22388518/scaffolds.fasta \
+  resultados/01_ensamblaje/SRR22388518.fasta
+  
+ln -sr resultados/01_ensamblaje/SRR22388519/scaffolds.fasta \
+  resultados/01_ensamblaje/SRR22388519.fasta
+  
+ln -sr resultados/01_ensamblaje/SRR18335437/scaffolds.fasta \
+  resultados/01_ensamblaje/SRR18335437.fasta
+  
+ln -sr resultados/01_ensamblaje/SRR18335438/scaffolds.fasta \
+  resultados/01_ensamblaje/SRR18335438.fasta
+```
+
+Verifiquemos los enlaces creados:
+
+```{bash}
+#| eval: false
+ls -l resultados/01_ensamblaje
+```
+
+
+```{bash}
+#| echo: false
+cd $HOME/proyectos/ensamblaje
+ls -lh resultados/01_ensamblaje
+```
+Finalmente, con todos los ensamblajes listos, procederemos a analizar su calidad.
+
+
+
+

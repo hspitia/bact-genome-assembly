@@ -257,8 +257,8 @@ Ahora instale los paquetes ejecutando el siguiente comando:
 
 ```{bash}
 #| eval: false
-mamba install -c bioconda csvtk fastp fastqc java-jdk multiqc pigz prokka \
-  quast spades sra-tools wget
+mamba install -c bioconda csvtk fastp fastqc java-jdk multiqc ncbi-datasets-cli \
+  pigz prokka quast spades sra-tools wget
 ```
 
 A continuación verá algunos mensajes y barras de progreso mientras mamba descarga los listados de paquetes y busca los paquetes que se ordenaron instalar. Al final mamba solicitará que confirme la instalación de los paquetes:
@@ -268,7 +268,7 @@ A continuación verá algunos mensajes y barras de progreso mientras mamba desca
 echo "...
   Summary:
 
-  Install: 289 packages
+  Install: 290 packages
 
   Total download: 1GB
 
@@ -280,7 +280,7 @@ Confirm changes: [Y/n]"
 
 Confirme escribiendo `Y` y después presione `<ENTER>`. De nuevo verá una serie de tareas completadas y barras de progreso mientras la instalación transcurre.
 
-Aunque se ordenó instalar 11 paquetes, cada uno de ellos requiere múltiples dependencias, es decir, paquetes adicionales para funcionar. Aquí es donde se facilitan las cosas: conda/mamba se encarga de revisar las dependencias de cada paquete, instalarlas y configurarlas automáticamente para que cada programa funcione adecuadamente.
+Aunque se ordenó instalar 11 paquetes, cada uno de ellos requiere múltiples dependencias, es decir, paquetes adicionales para funcionar. Aquí es donde se facilitan las cosas: mamba (o conda) se encarga de revisar las dependencias de cada paquete, instalarlas y configurarlas automáticamente para que cada programa funcione adecuadamente.
 
 Al finalizar la instalación verá un mensaje parecido a este:
 

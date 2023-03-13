@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hspitia.github.io/bact-genome-assembly/index.html</loc>
-    <lastmod>2023-03-11T23:00:59.387Z</lastmod>
+    <lastmod>2023-03-13T02:25:27.897Z</lastmod>
   </url>
   <url>
     <loc>https://hspitia.github.io/bact-genome-assembly/setup.html</loc>
-    <lastmod>2023-03-11T23:00:59.387Z</lastmod>
+    <lastmod>2023-03-13T02:25:27.901Z</lastmod>
   </url>
   <url>
     <loc>https://hspitia.github.io/bact-genome-assembly/data.html</loc>
-    <lastmod>2023-03-11T23:00:59.391Z</lastmod>
+    <lastmod>2023-03-13T02:25:27.901Z</lastmod>
   </url>
   <url>
     <loc>https://hspitia.github.io/bact-genome-assembly/data_qual.html</loc>
-    <lastmod>2023-03-11T23:00:59.395Z</lastmod>
+    <lastmod>2023-03-13T02:25:27.909Z</lastmod>
   </url>
   <url>
     <loc>https://hspitia.github.io/bact-genome-assembly/assembly.html</loc>
-    <lastmod>2023-03-11T23:00:59.395Z</lastmod>
+    <lastmod>2023-03-13T02:25:27.909Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hspitia.github.io/bact-genome-assembly/assembly_qual.html</loc>
+    <lastmod>2023-03-13T02:25:27.913Z</lastmod>
   </url>
   <url>
     <loc>https://hspitia.github.io/bact-genome-assembly/references.html</loc>
-    <lastmod>2023-03-11T23:00:59.395Z</lastmod>
+    <lastmod>2023-03-13T02:25:27.913Z</lastmod>
   </url>
   <url>
     <loc>https://hspitia.github.io/bact-genome-assembly/a-fastqc.html</loc>
-    <lastmod>2023-03-11T23:00:59.399Z</lastmod>
+    <lastmod>2023-03-13T02:25:27.913Z</lastmod>
   </url>
   <url>
     <loc>https://hspitia.github.io/bact-genome-assembly/Ensamblaje-y-Anotación-de-Genomas-Bacterianos.pdf</loc>
-    <lastmod>2023-03-11T23:00:59.075Z</lastmod>
+    <lastmod>2023-03-13T02:25:27.541Z</lastmod>
   </url>
 </urlset>

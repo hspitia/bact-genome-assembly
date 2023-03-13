@@ -1,21 +1,32 @@
 /*-- scss:defaults --*/
-// $h2-font-size:          1.6rem !default;
+$h1-font-size:          2.2rem !default;
+$h2-font-size:          1.75rem !default;
+$h3-font-size:          1.5rem !default;
+$h4-font-size:          1.25rem !default;
+$h5-font-size:          1.1rem !default;
+$h6-font-size:          1rem !default;
 // $headings-font-weight:  500 !default;
 // $link-color: #00923f;
+$udenar-color: #00923F;
+//$link-color: $udenar-color;
 $link-color: #3483dc;
 //$body-bg: #f5f5f5;
 $body-bg: #f8f8f8;
 $body-color: #373a3c;
+//$headings-color: $udenar-color;
+$headings-color: $body-color;
 
-// flatly
+
+// flatly colors
 //$code-block-bg: #e4e9eb;
 //$out-block-bg: #ebe6e4;
 
-// cosmo
+// cosmo colors
 $code-block-bg: #eff2f3;
-$out-block-bg: #f2efed;
 //$code-block-bg: #d9e0e2;
+$out-block-bg: #f2efed;
 $font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
 
 /*-- scss:rules --*/
 
@@ -25,11 +36,12 @@ $font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "
   //color: $link-color;
 }
 
-/*
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Abel", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  //font-family: "Abel", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: $headings-color;
 }
-*/
+
 
 a {
     text-decoration: none;
@@ -74,6 +86,10 @@ a {
 #margin-cild a {
   text-decoration: none;
   color: var(--bs-body-color);
+}
+
+.header-section-number {
+  color: $headings-color;
 }
 
 /*
